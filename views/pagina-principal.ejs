@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
     <title>Página de diseño</title>
 </head>
 <body>
-    <h1>Coordenadas</h1>
-    <h1>Latitud: <span id="lat"><%= lat %></span></h3>
-    <h1>Longitud: <span id="long"><%= long %></span></h3>
-    <h1>Fecha:<span id="date"><%= date %></span></h3>
-    <h1>Hora:<span id="time"><%= time %></span></h3>
+    <h1 style="color: #60b0c9">Coordenadas</h1>
+    <h3 style="color: #9bcf84">Latitud: <span style="color:black" id="lat"> <%= lat %></span></h3>
+    <h3 style="color: #9bcf84;">Longitud: <span style="color: black;" id="long"> <%= long %></span></h3>
+    <h3 style="color: #9bcf84;">Fecha:<span style="color: black;" id="date"> <%= date %></span></h3>
+    <h3 style="color: #9bcf84;">Hora:<span style="color: black;" id="time"> <%= time %></span></h3>
+    <div id="map"></div>
     <script src="/connection.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="iniciomapa.js"></script>
 </body>
-
-
 </html> 
