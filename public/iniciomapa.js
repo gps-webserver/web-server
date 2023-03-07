@@ -9,13 +9,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 let marker = L.marker([0, 0]).addTo(map);
 
 
-function updateMarker(lat, lng) {
+// function updateMarker(lat, lng) {
+//   marker.setLatLng([lat, lng]);
+  
+// }
+const updateMarker = (lat, lng) => {
   marker.setLatLng([lat, lng]);
-  
-
-  
 }
-
 
 setInterval(() => {
   fetch('/coords')
