@@ -11,7 +11,7 @@ let marker = L.marker([0, 0]).addTo(map);
 
 function updateMarker(lat, lng) {
   marker=marker.setLatLng([lat, lng]);
-  map.setView([lat, lng] );
+
   
 }
 
