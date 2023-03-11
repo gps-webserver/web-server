@@ -1,4 +1,4 @@
-let map = L.map('map').setView([4.639386,-74.082412],6)
+//let map = L.map('map').setView([4.639386,-74.082412],6)
 
 
 //Agregar tilelAyer mapa base desde openstreetmap
@@ -10,6 +10,8 @@ let marker = L.marker([0, 0]).addTo(map);
 
 function updateMarker(lat, lng) {
   marker.setLatLng([lat, lng]);
+  map.panTo([lat, lng]);
+
 }
 
 
@@ -20,4 +22,4 @@ setInterval(() => {
       console.log(data);
       updateMarker(data.lat, data.long);
     });
-}, 1000);
+}, 100);
