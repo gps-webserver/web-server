@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/index.js');
 const fs = require('fs');
 
-
+let gpsCoords = {latitud: 0, longitud: 0};
+var mensaje = ''
 var dataf=''
 
 //settings
@@ -44,27 +45,23 @@ socket.on('listening', () =>{
   console.log('En funcionamiento')
 });
 
-
-
-
-
 socket.on('message', (info) => {
-dataf = JSON.parse(info);
-console.log(dataf)  // recibo el mennsaje y lo guardo
-const content = `Latitud: ${dataf.latitud}, Longitud: ${dataf.longitud}, Fecha: ${dataf.fecha}, Hora: ${dataf.hora}\n`;
-fs.appendFile('received_data.txt', content, (err) => {
-  if (err) throw err;
-  console.log('Data saved into received_data.txt');})
-
-
+  dataf = JSON.parse(info);
+  console.log(dataf);
+  gpsCoords = {
+    latitud: dataf.latitud,
+    longitud: dataf.longitud
+  };
+  const content = `Latitud: ${dataf.latitud}, Longitud: ${dataf.longitud}, Fecha: ${dataf.fecha}, Hora: ${dataf.hora}\n`;
+  fs.appendFile('received_data.txt', content, (err) => {
+    if (err) throw err;
+    console.log('Data saved into received_data.txt');
+  }) 
 });
-
-
 
 
 app.get('/', (req, res) => {
   res.render('pagina-principal', {
-    
     lat: dataf.latitud,
     long: dataf.longitud,
     date: dataf.fecha,
@@ -74,10 +71,11 @@ app.get('/', (req, res) => {
 
 app.get('/coords', (req, res) => {
   res.json({
-    lat: dataf.latitud,
-    long: dataf.longitud,
+    lat: gpsCoords.latitud,
+    long: gpsCoords.longitud,
     date: dataf.fecha,
     time: dataf.hora,
   });
 });
+
 //npm run dev
