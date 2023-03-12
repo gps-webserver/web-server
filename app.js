@@ -4,6 +4,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes/index.js');
 const fs = require('fs');
+const { QueryTypes } = require("sequelize");
+const Sequelize = require('sequelize');
+const dotenv = require("dotenv");
+dotenv.config();
+
+const sequelize = new Sequelize(process.env.NAME,process.env.USER, process.env.PASS, { dialect: 'mysql', host: process.env.HOST
+ })
 
 let gpsCoords = {latitud: 0, longitud: 0};
 var mensaje = ''
@@ -45,18 +52,16 @@ socket.on('listening', () =>{
   console.log('En funcionamiento')
 });
 
-socket.on('message', (info) => {
+socket.on('message',  (info,rinfo) => {
   dataf = JSON.parse(info);
   console.log(dataf);
+  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}\")`);
   gpsCoords = {
     latitud: dataf.latitud,
     longitud: dataf.longitud
   };
   const content = `Latitud: ${dataf.latitud}, Longitud: ${dataf.longitud}, Fecha: ${dataf.fecha}, Hora: ${dataf.hora}\n`;
-  fs.appendFile('received_data.txt', content, (err) => {
-    if (err) throw err;
-    console.log('Data saved into received_data.txt');
-  }) 
+  
 });
 
 
@@ -71,11 +76,20 @@ app.get('/', (req, res) => {
 
 app.get('/coords', (req, res) => {
   res.json({
-    lat: gpsCoords.latitud,
-    long: gpsCoords.longitud,
+    lat: dataf.latitud,
+    long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
   });
 });
-
+app.get('/linea',async (req, res) => {
+  sequelize.query('SELECT distinct latitud,longitud FROM test.coords order by id desc limit 50', { raw: true }).then(function(rows){
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+    res.json({
+      rows:values
+    });
+  })
+  
+  
+});
 //npm run dev
