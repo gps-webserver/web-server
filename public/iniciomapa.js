@@ -1,5 +1,9 @@
 
-//let map = L.map('map').setView([4.639386,-74.082412],6)
+
+let map = L.map('map').setView([4.639386,-74.082412],100)
+var polyline;
+
+
 
 
 
@@ -11,11 +15,23 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 let marker = L.marker([0, 0]).addTo(map);
 
 
-function updateMarker(lat, lng) {
+
+function updatePolyline(rows) {
+  var coordsArray =rows
+ 
+  if (polyline) {
+    polyline.setLatLngs(coordsArray);
+  } else {
+    polyline = L.polyline(coordsArray, {color: 'red'}).addTo(map);
+    console.log('fcn')
+  }
+}
+function updateLastLocation(lat,lng){
+
   marker.setLatLng([lat, lng]);
   map.panTo([lat, lng]);
-
 }
+
 
 
 
@@ -24,8 +40,16 @@ setInterval(() => {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      updateMarker(data.lat, data.long);
+      updateLastLocation(data.lat, data.long);
     });
+    
+    
+  fetch('/linea')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.rows);
+      updatePolyline(data.rows);
+    });  
 
-}, 100);
+}, 500);
 
