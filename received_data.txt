@@ -642,3 +642,4 @@ Latitud: 10.985114, Longitud: -74.797042, Fecha: 7/3/2023, Hora: 13:11:5
 Latitud: 10.985114, Longitud: -74.797042, Fecha: 7/3/2023, Hora: 13:11:15
 Latitud: 10.985114, Longitud: -74.797043, Fecha: 7/3/2023, Hora: 13:11:25
 Latitud: 10.985114, Longitud: -74.797043, Fecha: 7/3/2023, Hora: 13:11:26
+
