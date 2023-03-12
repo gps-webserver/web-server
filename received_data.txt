@@ -642,6 +642,7 @@ Latitud: 10.985114, Longitud: -74.797042, Fecha: 7/3/2023, Hora: 13:11:5
 Latitud: 10.985114, Longitud: -74.797042, Fecha: 7/3/2023, Hora: 13:11:15
 Latitud: 10.985114, Longitud: -74.797043, Fecha: 7/3/2023, Hora: 13:11:25
 Latitud: 10.985114, Longitud: -74.797043, Fecha: 7/3/2023, Hora: 13:11:26
+
 Latitud: 10.932021, Longitud: -74.794949, Fecha: 11/3/2023, Hora: 17:57:8
 Latitud: 10.932021, Longitud: -74.794949, Fecha: 11/3/2023, Hora: 17:57:8
 Latitud: 10.932018, Longitud: -74.794941, Fecha: 11/3/2023, Hora: 17:57:13
@@ -828,3 +829,4 @@ Latitud: 10.893819, Longitud: -74.802832, Fecha: 12/3/2023, Hora: 1:55:30
 Latitud: 10.892592, Longitud: -74.802928, Fecha: 12/3/2023, Hora: 1:55:40
 Latitud: 10.891364, Longitud: -74.803024, Fecha: 12/3/2023, Hora: 1:55:50
 Latitud: 10.890137, Longitud: -74.80312, Fecha: 12/3/2023, Hora: 1:56:0
+
