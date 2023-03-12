@@ -9,7 +9,7 @@ const Sequelize = require('sequelize');
 const dotenv = require("dotenv");
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.NAME,process.env.USER, process.env.PASS, { dialect: 'mysql', host: process.env.HOST
+const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env.PASS1, { dialect: 'mysql', host: process.env.HOST1
  })
 
 let gpsCoords = {latitud: 0, longitud: 0};
