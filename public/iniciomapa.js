@@ -51,5 +51,5 @@ setInterval(() => {
       updatePolyline(data.rows);
     });  
 
-}, 500);
+}, 2000);
 
