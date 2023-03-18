@@ -46,5 +46,3 @@ setInterval(() => {
       //updatePolyline(data.rows);
     });  
 
-}, 1000);
-
