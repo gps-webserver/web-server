@@ -11,7 +11,7 @@ function cora(){
     .catch(error => console.error(error));
    
   }
-
+//hola
 cora()
 setInterval(cora,5000)
 
