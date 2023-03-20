@@ -11,12 +11,32 @@
     <title>Página de diseño</title>
 </head>
 <body>
-    <h1 style="color: #60b0c9">Coordenadas</h1>
-    <h3 style="color: #9bcf84">Latitud: <span style="color:black" id="lat"> <%= lat %></span></h3>
-    <h3 style="color: #9bcf84;">Longitud: <span style="color: black;" id="long"> <%= long %></span></h3>
-    <h3 style="color: #9bcf84;">Fecha:<span style="color: black;" id="date"> <%= date %></span></h3>
-    <h3 style="color: #9bcf84;">Hora:<span style="color: black;" id="time"> <%= time %></span></h3>
-    <div id="map"></div>
+   
+    <div class="Header">
+       
+        <a href=""><img src="/logo.png"  id="logo" alt=""></a>
+        
+        <h1 id="tipag">LOCATION GPS</h1>
+       
+        <div class="coord">
+            <h1 id="tituloc">Coordenadas</h1>
+            <h3 class="datos">Latitud: <span id="lat"> <%= lat %></span></h3>
+            <h3 class="datos">Longitud: <span id="long"> <%= long %></span></h3>
+            <h3 class="datos">Fecha:<span  id="date"> <%= date %></span></h3>
+            <h3 class="datos">Hora:<span id="time"> <%= time %></span></h3>
+        </div>
+        
+    </div>
+    <div class="mapa">
+        <h1>Vehiculo en tiempo real</h1>
+        <div id="map"></div>
+    </div>
+    
+    <div class="mapa">
+
+        <h1> Vista historicos</h1>
+       <button>MOSTRAR</button>
+    </div>
     <script src="/connection.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
