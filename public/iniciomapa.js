@@ -48,4 +48,8 @@ setInterval(() => {
 }, 1000);
     
    
-
+let Icon = L.icon({
+  iconUrl: '/marca.png',
+  iconSize: [90, 90],
+  iconAnchor: [25, 90],
+});
