@@ -6,9 +6,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let marker = L.marker([11.0071,-74.8092]).addTo(map);
+let Icon = L.icon({
+  iconUrl: '/marca.png',
+  iconSize: [90, 90],
+  iconAnchor: [25, 90],
+});
+let marker = L.marker([0, 0],{icon:Icon}).addTo(map);
 vector=[[11.0071,-74.8092]]
-polyline = L.polyline(vector, {color: 'red'}).addTo(map);
+polyline = L.polyline(vector, {color: 'green'}).addTo(map)
 
 function updatePolyline(rows) {
   var coordsArray =rows
@@ -48,8 +53,3 @@ setInterval(() => {
 }, 1000);
     
    
-let Icon = L.icon({
-  iconUrl: '/marca.png',
-  iconSize: [90, 90],
-  iconAnchor: [25, 90],
-});
