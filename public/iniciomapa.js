@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 }).addTo(map);
 
 let Icon = L.icon({
-  iconUrl: '/marca.png',
+  iconUrl: '/public/marca.png',
   iconSize: [90, 90],
   iconAnchor: [25, 90],
 });
