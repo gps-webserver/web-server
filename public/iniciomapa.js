@@ -65,7 +65,7 @@ setInterval(() => {
     });
 
 
-}, 1000);
+}, 1001);
     
    
 let Icon = L.icon({
