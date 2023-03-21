@@ -34,14 +34,43 @@
     
     <div class="mapa">
 
-        <h1> Vista historicos</h1>
-       <button>Enseñar</button>  <!---boton para historicos-->
+        <h1> Vista históricos</h1>
+        <button onclick="historico()">MOSTRAR</button>
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="trip-start" value="" min="" max="">
+        <label for="end">End date:</label>
+        <input type="date" id="end" name="trip-end" value="" min="" max=""> 
+
     </div>
     <script src="/connection.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
     <script src="iniciomapa.js"></script>
+    <script>
+        const startDateInput = document.querySelector('#start');
+        const endDateInput = document.querySelector('#end');
+        startDateInput.addEventListener('input', () => {
+          endDateInput.min = startDateInput.value;
+          if (endDateInput.value < startDateInput.value) {
+            endDateInput.value = startDateInput.value;
+          }
+    });</script>
+    <script>
+        const startDatePicker = document.getElementById("start");
+        const endDatePicker = document.getElementById("end");
+        const fechaHoy = new Date();
+        const timeZoneOffset = -5 * 60; // 5 horas menos que GMT
+        fechaHoy.setTime(fechaHoy.getTime() + timeZoneOffset * 60 * 1000);
+        const anio = fechaHoy.getFullYear();
+        const mes = fechaHoy.getMonth() + 1; // Sumamos 1 porque los meses van de 0 a 11
+        const dia = fechaHoy.getDate();
+        const fechaActual = `${anio}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+        console.log("Today in Colombia: ", fechaActual);
+        startDatePicker.setAttribute("max", fechaActual);
+        endDatePicker.setAttribute("max", fechaActual);
 
+    </script>    
+        
 </body>
 </html> 

@@ -45,6 +45,7 @@ app.listen(app.get('port'), () =>{
 
 //sniffer
 const dgram = require('dgram');
+const { request } = require('http');
 const PORT = 52000;
 const socket = dgram.createSocket('udp4');
 socket.bind(PORT);
@@ -93,5 +94,18 @@ app.get('/linea',async (req, res) => {
   
 });
 
+
+app.get('/historico',async (req, res) => {
+  const inicio = req.query.inicio 
+  const final = req.query.final
+  sequelize.query(`SELECT distinct latitud,longitud FROM test.coords WHERE fecha BETWEEN ${inicio} AND ${final} order by id desc`, { raw: true }).then(function(rows){
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+    res.json({
+      rows:values
+    });
+  })
+  
+  
+});
 
 //npm run dev
