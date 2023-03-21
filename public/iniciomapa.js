@@ -6,9 +6,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let marker = L.marker([11.019067669425738,-74.85135899187047]).addTo(map);
+let Icon = L.icon({
+  iconUrl: '/marca2.png',
+  iconSize: [90, 90],
+  iconAnchor: [25, 90],
+});
+let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
 vector=[[11.0071,-74.8092]]
-polyline = L.polyline(vector, {color: 'red'}).addTo(map);
+polyline = L.polyline(vector, {color: 'green'}).addTo(map);
+
+
 
 function historico() {
   const startDateInput = document.querySelector('#start').value;
