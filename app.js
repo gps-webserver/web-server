@@ -94,6 +94,7 @@ app.get('/linea',async (req, res) => {
   
 });
 
+
 app.get('/historico',async (req, res) => {
   const inicio = req.query.inicio 
   const final = req.query.final
@@ -106,4 +107,5 @@ app.get('/historico',async (req, res) => {
   
   
 });
+
 //npm run dev
