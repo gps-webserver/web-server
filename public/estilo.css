@@ -7,10 +7,3 @@ body {
   width: 100hw;
 }
 
-#calendario {
-  width: 300px;
-  height: 400px;
-  position: fixed;
-  right: 0;
-  top: 0;
-}

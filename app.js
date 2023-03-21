@@ -8,7 +8,6 @@ const { QueryTypes } = require("sequelize");
 const Sequelize = require('sequelize');
 const dotenv = require("dotenv");
 dotenv.config();
-const moment = require('moment');
 
 const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env.PASS1, { dialect: 'mysql', host: process.env.HOST1
  })
@@ -16,10 +15,6 @@ const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env
 let gpsCoords = {latitud: 0, longitud: 0};
 var mensaje = ''
 var dataf=''
-
-let mensajeCalen = '';
-let fechaInicialSeleccionada = null;
-let fechaFinalSeleccionada = null;
 
 //settings
 app.set('port', process.env.PORT || 80);
@@ -98,27 +93,6 @@ app.get('/linea',async (req, res) => {
   
 });
 
-//Visualizacion y tratamiento de fechas
-
-app.post('/calendario', (req, res) => {
-  const fechaInicial = moment(req.body.fechaInicial);
-  const fechaFinal = moment(req.body.fechaFinal);
-
-  if (fechaFinal.isBefore(fechaInicial)) {
-    mensajeCalen = 'La fecha final no puede ser anterior a la fecha inicial';
-    res.redirect('/calendario');
-  } else {
-    mensajeCalen = '';
-
-    ////////
-    // Agrega aquí el código que necesites para manejar los resultados de la selección de fechas
-    ////////
-    
-    fechaInicialSeleccionada = fechaInicial.format('DD/MM/YYYY HH:mm:ss');
-    fechaFinalSeleccionada = fechaFinal.format('DD/MM/YYYY HH:mm:ss');
-    res.redirect('/resultados');
-  }
-});
 
 // Edit para ver si funcionó
 //npm run dev
