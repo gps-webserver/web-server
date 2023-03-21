@@ -47,16 +47,16 @@ body {
   margin-left: 10px;
 }
 #lat{
-  color: white;
+  color: black;
 }
 #long{
-  color: white;
+  color: black;
 }
 #date{
-  color: white;
+  color: black;
 }
 #time{
-  color: white;
+  color: black;
 }
 
 
@@ -67,3 +67,4 @@ body {
   font-weight: bold;
   background-color: rgba(50, 143, 45, 0.5);;
 }
+

@@ -93,5 +93,6 @@ app.get('/linea',async (req, res) => {
   
 });
 
+
 // Edit para ver si funcionó
 //npm run dev
