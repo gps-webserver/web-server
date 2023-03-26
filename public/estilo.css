@@ -13,8 +13,8 @@ body {
 
   background-color: rgba(15, 69, 12,0.5);
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-wrap: wrap; 
+  flex-direction: column;
   color: white;
   width: 100%;
   
