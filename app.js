@@ -96,17 +96,17 @@ app.get('/linea',async (req, res) => {
   
 });
 
-app.get('/historico',async (req, res) => {
-  const inicio = req.query.inicio 
-  const final = req.query.final
-  sequelize.query(`SELECT distinct latitud,longitud FROM test.coords WHERE fecha BETWEEN ${inicio} AND ${final} order by id desc`, { raw: true }).then(function(rows){
+app.get('/historico', async (req, res) => {
+  const inicio = req.query.inicio;
+  const final = req.query.final;
+
+  sequelize.query(`SELECT DISTINCT latitud, longitud FROM test.coords WHERE fecha BETWEEN '${inicio}' AND '${final}' ORDER BY id DESC`, { raw: true }).then(function(rows) {
     const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
     res.json({
-      rows:values
+      rows: values
     });
-  })
-  
-  
+  });
 });
+
 
 //npm run dev

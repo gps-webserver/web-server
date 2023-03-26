@@ -15,18 +15,21 @@ function historico() {
   const endDateInput = document.querySelector('#end').value;
   const startDateParts = startDateInput.split('-');
   const endDateParts = endDateInput.split('-');
-  const startDate = "'"+startDateParts[2] + '/' + startDateParts[1] + '/' + startDateParts[0]+"'";
-  const endDate = "'"+endDateParts[2] + '/' + endDateParts[1] + '/' + endDateParts[0]+"'";
-  console.log (startDate,endDate)
+  const startTimeInput = document.querySelector('#start-time').value;
+  const endTimeInput = document.querySelector('#end-time').value;
+  const startTime = startTimeInput.padStart(5, '0');
+  const endTime = endTimeInput.padStart(5, '0');
+  const startDate = `'${startDateParts[0]}-${startDateParts[1]}-${startDateParts[2]} ${startTime}:00'`;
+  const endDate = `'${endDateParts[0]}-${endDateParts[1]}-${endDateParts[2]} ${endTime}:00'`;
+  
   fetch(`/historico?inicio=${startDate}&final=${endDate}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
       updatePolyline(data.rows);
     });
-
-
 }
+
 
 function updatePolyline(rows) {
   var coordsArray =rows

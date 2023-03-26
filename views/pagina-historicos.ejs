@@ -27,9 +27,9 @@
         <h1> Vista históricos</h1>
         <button onclick="historico()">MOSTRAR</button>
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="trip-start" value="" min="" max="">
+        <input type="datetime-local" id="start" name="trip-start" value="" min="" max="">
         <label for="end">End date:</label>
-        <input type="date" id="end" name="trip-end" value="" min="" max=""> 
+        <input type="datetime-local" id="end" name="trip-end" value="" min="" max=""> 
 
     </div>
 
@@ -49,10 +49,12 @@
         const endDateInput = document.querySelector('#end');
         startDateInput.addEventListener('input', () => {
           endDateInput.min = startDateInput.value;
-          if (endDateInput.value < startDateInput.value) {
+          if (new Date(endDateInput.value).getTime() < new Date(startDateInput.value).getTime()) {
             endDateInput.value = startDateInput.value;
           }
-    });</script>
+        });
+    </script>
+      
 
     <script>
         const startDatePicker = document.getElementById("start");
