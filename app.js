@@ -30,6 +30,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use('/historicos', require('./routes/index.js'));
+
 //routes
 app.use(routes);
 
@@ -93,7 +95,6 @@ app.get('/linea',async (req, res) => {
   
   
 });
-
 
 app.get('/historico',async (req, res) => {
   const inicio = req.query.inicio 

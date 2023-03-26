@@ -68,3 +68,10 @@ body {
   background-color: rgba(50, 143, 45, 0.5);;
 }
 
+.connect{
+  text-align: center;
+  font-size: 23px;
+  color:white;
+  font-weight: bold;
+  background-color: rgba(50, 143, 45, 0.5);;
+}
