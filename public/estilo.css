@@ -2,12 +2,18 @@ body {
   background-image: url(/BACK.jpg) ;
 }
 
+.contenerdor{
+  width: 100%;
+  margin:0 auto;
+}
+
 #map {
-  margin-top: 5px;
+  margin-top: 0%;
   height: 90vh;
-  width: 98%;
+  width: 100%;
   justify-content: center;
   margin-left: 20px;
+  box-sizing:border-box;
 }
 .Header{
 
@@ -15,36 +21,42 @@ body {
   display: flex;
   color: white;
   width: 100%;
+  box-sizing:border-box;
 
 }
 #tipag{
-  font-size: 70px;
+  font-size: 70%;
   margin-left: 8%;
   width: 100%;
-  text-align: center;
+  box-sizing:border-box;
+  
 }
 #logo  {
-  height: 200px;
-  margin-left: 5%;
-  margin-top: 5%;
+  width: 100%;
+  height: 100%;
+  margin-left: 100%;
+  margin-top: 100%;
+  box-sizing:border-box;
 }
 .Header .coord{
   background-color: rgba(44, 158, 38, 0.5);
-  width: 45%;
-  font-size: 15px;
+  width: 100%;
+  font-size: 30%;
+  box-sizing:border-box;
 }
 .Header .coord .datos{
 
   color:black;
-  margin-left: 15px;
- 
+  margin-left: 100%;
+  box-sizing:border-box;
   
 }
 #tituloc{
   color: white;
-  font-size: 35px;
+  font-size: 50%;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 100%;
+  box-sizing:border-box;
 }
 #lat{
   color: black;
@@ -61,10 +73,182 @@ body {
 
 
 .mapa{
+  width: 100%;
   text-align: center;
-  font-size: 23px;
+  font-size: 23%;
   color:white;
   font-weight: bold;
   background-color: rgba(50, 143, 45, 0.5);;
+  box-sizing:border-box;
+}
+@media screen and (max-width: 767px) {
+  body {
+    background-image: url(/BACK.jpg) ;
+  }
+  
+  .contenerdor{
+    width: 100%;
+    margin:0 auto;
+  }
+  
+  #map {
+    margin-top: 0%;
+    height: 90vh;
+    width: 100%;
+    justify-content: center;
+    margin-left: 20px;
+    box-sizing:border-box;
+  }
+  .Header{
+  
+    background-color: rgba(15, 69, 12,0.5);
+    display: flex;
+    color: white;
+    width: 100%;
+    box-sizing:border-box;
+  
+  }
+  #tipag{
+    font-size: 70%;
+    margin-left: 8%;
+    width: 100%;
+    box-sizing:border-box;
+    
+  }
+  #logo  {
+    width: 100%;
+    height: 100%;
+    margin-left: 100%;
+    margin-top: 100%;
+    box-sizing:border-box;
+  }
+  .Header .coord{
+    background-color: rgba(44, 158, 38, 0.5);
+    width: 100%;
+    font-size: 30%;
+    box-sizing:border-box;
+  }
+  .Header .coord .datos{
+  
+    color:black;
+    margin-left: 100%;
+    box-sizing:border-box;
+    
+  }
+  #tituloc{
+    color: white;
+    font-size: 50%;
+    font-weight: bold;
+    margin-left: 100%;
+    box-sizing:border-box;
+  }
+  #lat{
+    color: black;
+  }
+  #long{
+    color: black;
+  }
+  #date{
+    color: black;
+  }
+  #time{
+    color: black;
+  }
+  
+  
+  .mapa{
+    width: 100%;
+    text-align: center;
+    font-size: 23%;
+    color:white;
+    font-weight: bold;
+    background-color: rgba(50, 143, 45, 0.5);;
+    box-sizing:border-box;
+}
 }
 
+@media screen and (max-width: 990px) {
+  body {
+    background-image: url(/BACK.jpg) ;
+  }
+  
+  .contenerdor{
+    width: 100%;
+    margin:0 auto;
+  }
+  
+  #map {
+    margin-top: 0%;
+    height: 90vh;
+    width: 100%;
+    justify-content: center;
+    margin-left: 20px;
+    box-sizing:border-box;
+  }
+  .Header{
+  
+    background-color: rgba(15, 69, 12,0.5);
+    display: flex;
+    color: white;
+    width: 100%;
+    box-sizing:border-box;
+  
+  }
+  #tipag{
+    font-size: 70%;
+    margin-left: 8%;
+    width: 100%;
+    box-sizing:border-box;
+    
+  }
+  #logo  {
+    width: 100%;
+    height: 100%;
+    margin-left: 100%;
+    margin-top: 100%;
+    box-sizing:border-box;
+  }
+  .Header .coord{
+    background-color: rgba(44, 158, 38, 0.5);
+    width: 100%;
+    font-size: 30%;
+    box-sizing:border-box;
+  }
+  .Header .coord .datos{
+  
+    color:black;
+    margin-left: 100%;
+    box-sizing:border-box;
+    
+  }
+  #tituloc{
+    color: white;
+    font-size: 50%;
+    font-weight: bold;
+    margin-left: 100%;
+    box-sizing:border-box;
+  }
+  #lat{
+    color: black;
+  }
+  #long{
+    color: black;
+  }
+  #date{
+    color: black;
+  }
+  #time{
+    color: black;
+  }
+  
+  
+  .mapa{
+    width: 100%;
+    text-align: center;
+    font-size: 23%;
+    color:white;
+    font-weight: bold;
+    background-color: rgba(50, 143, 45, 0.5);;
+    box-sizing:border-box;
+}
+}

@@ -15,8 +15,8 @@ function historico() {
   const endDateInput = document.querySelector('#end').value;
   const startDateParts = startDateInput.split('-');
   const endDateParts = endDateInput.split('-');
-  const startDate = "'"+startDateParts[2] + '/' + startDateParts[1] + '/' + startDateParts[0]+"'";
-  const endDate = "'"+endDateParts[2] + '/' + endDateParts[1] + '/' + endDateParts[0]+"'";
+  const startDate = "'"+startDateParts[4] +'/'+startDateParts[3] +'/' +startDateParts[2] + '' + startDateParts[1] + ':' + startDateParts[0]+"'";
+  const endDate = "'"+endDateParts[4] +'/'+endDateParts[3] +'/' +endDateParts[2] + '' + endDateParts[1] + ':' + endDateParts[0]+"'";
   console.log (startDate,endDate)
   fetch(`/historico?inicio=${startDate}&final=${endDate}`)
     .then(response => response.json())

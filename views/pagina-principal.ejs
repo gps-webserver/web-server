@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
-    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <link rel="stylesheet" type="text/css" href="estilo2.css"/>
     <title>Página de diseño</title>
 </head>
 <body>
-   
+    <div class="contenedor">
     <div class="Header">
        
         <a href=""><img src="/logo.png"  id="logo" alt=""></a>
@@ -37,9 +37,10 @@
         <h1> Vista históricos</h1>
         <button onclick="historico()">MOSTRAR</button>
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="trip-start" value="" min="" max="">
+        <input type="datetime-local" id="start" name="trip-start" value="" min="" max="">
         <label for="end">End date:</label>
-        <input type="date" id="end" name="trip-end" value="" min="" max=""> 
+        <input type="datetime-local" id="end" name="trip-end" value="" min="" max=""> 
+        <a href="pagina-secundaria.e">Históricos</a>
 
     </div>
     <script src="/connection.js"></script>
@@ -71,6 +72,6 @@
         endDatePicker.setAttribute("max", fechaActual);
 
     </script>    
-        
+    </div>>    
 </body>
 </html> 

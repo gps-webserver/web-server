@@ -75,6 +75,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/pagina-secundaria', (req, res) => {
+  res.render('pagina-secundaria');
+});
+
 app.get('/coords', (req, res) => {
   res.json({
     lat: dataf.latitud,
