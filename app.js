@@ -108,7 +108,11 @@ app.get('/historico', async (req, res) => {
   const inicio = req.query.inicio;
   const final = req.query.final;
 
-  sequelize.query(`SELECT DISTINCT latitud, longitud FROM test.coords WHERE fecha BETWEEN ${inicio} AND ${final} ORDER BY id DESC`, { raw: true }).then(function(rows) {
+  sequelize.query(`SELECT latitud, longitud
+  FROM test.coords
+  WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
+  BETWEEN '${inicio}' AND '${final}'
+  ORDER BY id DESC;`, { raw: true }).then(function(rows) {
     const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
     res.json({
       rows: values

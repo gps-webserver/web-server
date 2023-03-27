@@ -24,14 +24,12 @@ function historico() {
   const endDateInput0 = document.querySelector('input[type="datetime-local"][id="end"]').value;
   const endDateInput = endDateInput0.split("T")[0];
   const endTimeInput = endDateInput0.split("T")[1];
-  const startDateParts = startDateInput.split('-');
-  const endDateParts = endDateInput.split('-');
+  const startDate = startDateInput+' '+startTimeInput+':00'
+  const endDate = endDateInput+' '+endTimeInput+':00'
   //const startTimeInput = document.querySelector('start-time').value;
   //const endTimeInput = document.querySelector('end-time').value;
-  const startTime = startTimeInput.padStart(5, '0');
-  const endTime = endTimeInput.padStart(5, '0');
-  const startDate = "'"+startDateParts[2] + '/' + startDateParts[1] + '/' + startDateParts[0]+"'";
-  const endDate = "'"+endDateParts[2] + '/' + endDateParts[1] + '/' + endDateParts[0]+"'";
+  //const startDate = "'"+startDateParts[2] + '/' + startDateParts[1] + '/' + startDateParts[0]+"'";
+  //const endDate = "'"+endDateParts[2] + '/' + endDateParts[1] + '/' + endDateParts[0]+"'";
   
   fetch(`/historico?inicio=${startDate}&final=${endDate}`)
     .then(response => response.json())
