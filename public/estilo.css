@@ -2,6 +2,8 @@ body {
   background-image: url(/BACK.jpg) ;
 }
 
+.contenedor
+
 #map {
   margin-top: 5px;
   height: 90vh;
