@@ -18,16 +18,20 @@ polyline = L.polyline(vector, {color: 'green'}).addTo(map);
 
 
 function historico() {
-  const startDateInput = document.querySelector('#start').value;
-  const endDateInput = document.querySelector('#end').value;
+  const startDateInput0 = document.querySelector('input[type="datetime-local"][id="start"]').value;
+  const startDateInput = startDateInput0.split("T")[0];
+  const startTimeInput = startDateInput0.split("T")[1];
+  const endDateInput0 = document.querySelector('input[type="datetime-local"][id="end"]').value;
+  const endDateInput = endDateInput0.split("T")[0];
+  const endTimeInput = endDateInput0.split("T")[1];
   const startDateParts = startDateInput.split('-');
   const endDateParts = endDateInput.split('-');
-  const startTimeInput = document.querySelector('#start-time').value;
-  const endTimeInput = document.querySelector('#end-time').value;
+  //const startTimeInput = document.querySelector('start-time').value;
+  //const endTimeInput = document.querySelector('end-time').value;
   const startTime = startTimeInput.padStart(5, '0');
   const endTime = endTimeInput.padStart(5, '0');
-  const startDate = `'${startDateParts[0]}-${startDateParts[1]}-${startDateParts[2]} ${startTime}:00'`;
-  const endDate = `'${endDateParts[0]}-${endDateParts[1]}-${endDateParts[2]} ${endTime}:00'`;
+  const startDate = `'${startDateParts[0]}-${startDateParts[1]}-${startDateParts[2]}'`;
+  const endDate = `'${endDateParts[0]}-${endDateParts[1]}-${endDateParts[2]}'`;
   
   fetch(`/historico?inicio=${startDate}&final=${endDate}`)
     .then(response => response.json())
