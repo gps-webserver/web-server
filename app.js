@@ -77,6 +77,12 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/pagina-historicos', (req, res) => {
+  res.render('pagina-historicos', {
+    ltitle: 'historicos'
+  });
+});
+
 app.get('/coords', (req, res) => {
   res.json({
     lat: dataf.latitud,
@@ -95,6 +101,8 @@ app.get('/linea',async (req, res) => {
   
   
 });
+
+
 
 app.get('/historico', async (req, res) => {
   const inicio = req.query.inicio;
