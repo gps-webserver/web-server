@@ -10,40 +10,45 @@
     crossorigin=""/>
     <link rel="stylesheet" type="text/css" href="estilo.css"/>
     <title>Página de diseño</title>
-</head>
+</head> 
+
 <body>
-    <div class="contenedor">
-    <div class="Header">
-       
-        <a href=""><img src="/logo.png"  id="logo" alt=""></a>
-        
-        <h1 id="tipag">LOCATION  GPS</h1>
-       
+ 
+    <div class="Contenedor">
+<div class="contenedor">
+      <div class="Header">
+      <div class=Logo-box>
+        <a href=""><img src="/logo.png" id="logo" alt=""></a>
+      </div>
+      <div class="Tittle-box">
+        <h1 id="tipag">LOCATION GPS</h1>
+      </div>
         <div class="coord">
-            <h1 id="tituloc">Coordenadas</h1>
-            <h3 class="datos">Latitud: <span id="lat"> <%= lat %></span></h3>
-            <h3 class="datos">Longitud: <span id="long"> <%= long %></span></h3>
-            <h3 class="datos">Fecha:<span  id="date"> <%= date %></span></h3>
-            <h3 class="datos">Hora:<span id="time"> <%= time %></span></h3>
+          <h1 id="tituloc">Coordenadas</h1>
+          <h3 class="datos">Latitud: <span id="lat"><%= lat %></span></h3>
+          <h3 class="datos">Longitud: <span id="long"><%= long %></span></h3>
+          <h3 class="datos">Fecha:<span id="date"><%= date %></span></h3>
+          <h3 class="datos">Hora:<span id="time"><%= time %></span></h3>
         </div>
-        
-    </div>
-    <div class="mapa">
+      </div>
+  
+      <div class="mapa">
         <h1>Vehículo en tiempo real</h1>
         <div id="map"></div>
-    </div>
-    
-    <div class="connect">
-
-        <h1> Vista históricos</h1>
+      </div>
+  
+      <div class="connect">
+        <h1>Vista históricos</h1>
         <button onclick="window.location.href='/pagina-historicos'">Ver datos historicos</button>
-
+      </div>
+  
     </div>
+  
     <script src="/connection.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
-    <script src="iniciomapa.js"></script>  
-</div>  
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""></script>
+    <script src="iniciomapa.js"></script>
+  
 </body>
 </html> 
