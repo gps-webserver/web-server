@@ -1,21 +1,41 @@
 body {
   background-image: url(/BACK.jpg) ;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #map {
-  margin-top: 5px;
+  z-index: 0;
   height: 90vh;
-  width: 98%;
+  margin: 0 10px;
   justify-content: center;
-  margin-left: 20px;
+  align-self: center;
 }
+
+.Contenedor {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow:hidden;
+
+}
+
 .Header{
 
   background-color: rgba(15, 69, 12,0.5);
   display: flex;
   color: white;
   width: 100%;
+  flex-wrap: wrap;
+  
 
+}
+
+.Logo-box{
+  width: 30%;
+  
+}
+.Tittle.box{
+  width: 40%;
 }
 #tipag{
   font-size: 70px;
@@ -24,14 +44,20 @@ body {
   text-align: center;
 }
 #logo  {
-  height: 200px;
+  height: auto;
   margin-left: 5%;
   margin-top: 5%;
+  
 }
+.coord{
+  width: 30%;
+}
+
 .Header .coord{
   background-color: rgba(44, 158, 38, 0.5);
-  width: 45%;
   font-size: 15px;
+  margin-left: auto;
+  
 }
 .Header .coord .datos{
 
@@ -47,23 +73,100 @@ body {
   margin-left: 10px;
 }
 #lat{
-  color: white;
+  color: black;
 }
 #long{
-  color: white;
+  color: black;
 }
 #date{
-  color: white;
+  color: black;
 }
 #time{
-  color: white;
+  color: black;
 }
 
+.container-map {
+  position: relative;
+}
 
 .mapa{
+  display: flex;
+  flex-direction: column;
   text-align: center;
   font-size: 23px;
   color:white;
   font-weight: bold;
   background-color: rgba(50, 143, 45, 0.5);;
+}
+
+.selected-info {
+  z-index: 1;
+  position: absolute;
+  background-color: white;
+  border-radius: 30px;
+  padding: 1rem;
+  color: black;
+  top: 15px;
+  right: 25px;
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.274));
+  font-size: small;
+}
+
+.selected-info label{
+  display: inline-flex;
+}
+
+.selected-info p{
+  margin: 0;
+}
+
+.connect{
+  text-align: center;
+  font-size: 23px;
+  color:white;
+  font-weight: bold;
+  background-color: rgba(50, 143, 45, 0.5);;
+}
+
+@media screen and (max-width: 800px){
+  .Logo-box, .Tittle-box, .coord {
+    width: 100%;
+}
+}
+
+
+@media screen and (max-width: 400px){
+  .Contenedor{
+    width: 100%;
+  }
+  
+  .Logo-box, .Tittle-box, .coord {
+    width: 100%;
+}
+#tipag {
+  font-size: 50px;
+  text-align:left;
+  margin-top: 20px;
+}
+
+#tituloc {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.datos {
+  font-size: 18px;
+}
+
+#logo {
+  height: 100px;
+  margin: 10px auto;
+  display: block;
+}
+#map {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
 }

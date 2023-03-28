@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <title>Página historicos</title>
+</head>
+<body>
+    <div class="Contenedor">
+    <div class="Header">
+       
+        <a href=""><img src="/logo.png"  id="logo" alt=""></a>
+        
+        <h1 id="tipag">LOCATION GPS</h1>
+        
+    </div>
+    <div class="mapa">
+        <h1>Ruta recorrida por vehículo</h1>
+        <div class="container-map">
+            <div class="selected-info">
+                <label>Fecha:<p id="selected-date">--/--/----</p></label>
+                <label>Hora:<p id="selected-hour">--:--</p></label>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+    <div class="mapa">
+        <label for="mySlider">Radio:</label>
+        <input type="range" id="mySlider" name="mySlider" min="0" max="100" step="1" value="50">
+        <label for="mySlider2">Datafound:</label>
+        <input type="range" id="Datafound" name="Datafound" min="0" max="0" step="1" value="0">
+        <h1> Vista históricos</h1>
+        <button onclick="historico()">MOSTRAR</button>
+        <label for="start">Start date:</label>
+        <input type="datetime-local" id="start" name="trip-start" value="" min="" max="">
+        <label for="end">End date:</label>
+        <input type="datetime-local" id="end" name="trip-end" value="" min="" max=""> 
+
+    </div>
+
+    <div class="connect">
+
+        <h1> </h1>
+        <button onclick="window.location.href='/'">Volver a la página principal</button>
+
+    </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="iniciomapa.js"></script>
+    <script src="/datelimit.js"></script>
+<script>
+  window.setDateInputs();
+  window.setCurrentDate();
+</script>
+
+</body>
+</html>
