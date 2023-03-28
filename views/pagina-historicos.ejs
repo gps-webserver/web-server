@@ -13,11 +13,12 @@
 <body>
     <div class="Contenedor">
     <div class="Header">
-       
-        <a href=""><img src="/logo.png"  id="logo" alt=""></a>
-        
-        <h1 id="tipag">LOCATION GPS</h1>
-        
+        <div class=Logo-box>
+            <a href=""><img src="/logo.png" id="logo" alt=""></a>
+          </div>
+          <div class="Tittle-box">
+            <h1 id="tipag">LOCATION GPS</h1>
+          </div>
     </div>
     <div class="mapa">
         <h1>Ruta recorrida por vehículo</h1>
@@ -27,9 +28,9 @@
 
         <h1> Vista históricos</h1>
         <button onclick="historico()">MOSTRAR</button>
-        <label for="start">Start date:</label>
+        <label for="start">Fecha Inicio:</label>
         <input type="datetime-local" id="start" name="trip-start" value="" min="" max="">
-        <label for="end">End date:</label>
+        <label for="end">Fecha Final:</label>
         <input type="datetime-local" id="end" name="trip-end" value="" min="" max=""> 
 
     </div>
