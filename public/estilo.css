@@ -12,62 +12,68 @@ body {
   height: 90vh;
   width: 100%;
   justify-content: center;
-  margin-left: 20px;
-  box-sizing:border-box;
+  margin-left: 20%;
+
 }
 .Header{
-
+  text-align: center;
   background-color: rgba(15, 69, 12,0.5);
   display: flex;
   color: white;
   width: 100%;
-  box-sizing:border-box;
+  justify-content: space-between;
 
 }
-#tipag{
+.tipag{
+  text-align: center;
   font-size: 70%;
   margin-left: 8%;
   width: 100%;
-  box-sizing:border-box;
+  
   
 }
-#logo  {
+.logo  {
+  text-align: center;
   width: 100%;
   height: 100%;
   margin-left: 100%;
   margin-top: 100%;
-  box-sizing:border-box;
+
 }
 .Header .coord{
+  
   background-color: rgba(44, 158, 38, 0.5);
   width: 100%;
-  font-size: 30%;
-  box-sizing:border-box;
+  font-size: 100%;
+  justify-content: space-between;
 }
 .Header .coord .datos{
-
+  text-align: center;
+  width: 100%;
   color:black;
   margin-left: 100%;
-  box-sizing:border-box;
+  justify-content: space-between;
   
 }
-#tituloc{
+.tituloc{
+  text-align: center;
+  width: 100%;
   color: white;
-  font-size: 50%;
+  font-size: 100%;
   font-weight: bold;
   margin-left: 100%;
-  box-sizing:border-box;
+  
 }
-#lat{
+.lat{
   color: black;
 }
-#long{
+.long{
   color: black;
 }
-#date{
+.date{
   color: black;
 }
-#time{
+.time{
   color: black;
 }
 
@@ -78,13 +84,13 @@ body {
   font-size: 23%;
   color:white;
   font-weight: bold;
-  background-color: rgba(50, 143, 45, 0.5);;
+  background-color: grgba(50, 143, 45, 0.5);;
+  box-sizing:border-box;
 }
 
-.connect{
-  text-align: center;
-  font-size: 23px;
-  color:white;
-  font-weight: bold;
-  background-color: rgba(50, 143, 45, 0.5);;
+@media screen and (max-width:800px) {
+  .Header{
+    flex-direction: column;
+  }
+  
 }
