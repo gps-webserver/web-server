@@ -1,31 +1,46 @@
 body {
   background-image: url(/BACK.jpg) ;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .contenedor
 
 #map {
-  margin-top: 0%;
+  z-index: 0;
   height: 90vh;
-  width: 100%;
+  margin: 0 10px;
   justify-content: center;
-  margin-left: 20%;
+  align-self: center;
+}
+
+.Contenedor {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow:hidden;
 
 }
+
 .Header{
   text-align: center;
   background-color: rgba(15, 69, 12,0.5);
   display: flex;
-  flex-wrap: wrap; 
-  flex-direction: column;
   color: white;
   width: 100%;
+  flex-wrap: wrap;
   
 
 }
-.tipag{
-  text-align: center;
-  font-size: 70%;
+
+.Logo-box{
+  width: 30%;
+  
+}
+.Tittle.box{
+  width: 40%;
+}
+#tipag{
+  font-size: 70px;
   margin-left: 8%;
   width: 100%;
   
@@ -33,18 +48,23 @@ body {
 }
 .logo  {
   text-align: center;
-  width: 100%;
-  height: 100%;
-  margin-left: 100%;
-  margin-top: 100%;
-
 }
+#logo  {
+  height: auto;
+  margin-left: 5%;
+  margin-top: 5%;
+  
+}
+.coord{
+  width: 30%;
+}
+
 .Header .coord{
   
   background-color: rgba(44, 158, 38, 0.5);
-  width: 100%;
-  font-size: 100%;
-  justify-content: space-between;
+  font-size: 15px;
+  margin-left: auto;
+  
 }
 .Header .coord .datos{
   text-align: center;
@@ -76,20 +96,88 @@ body {
   color: black;
 }
 
+.container-map {
+  position: relative;
+}
 
 .mapa{
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   font-size: 23%;
   color:white;
   font-weight: bold;
-  background-color: grgba(50, 143, 45, 0.5);;
-  box-sizing:border-box;
+  background-color: rgba(50, 143, 45, 0.5);;
 }
 
-@media screen and (max-width:800px) {
-  .Header{
-    flex-direction: column;
+.selected-info {
+  z-index: 1;
+  position: absolute;
+  background-color: white;
+  border-radius: 30px;
+  padding: 1rem;
+  color: black;
+  top: 15px;
+  right: 25px;
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.274));
+  font-size: small;
+}
+
+.selected-info label{
+  display: inline-flex;
+}
+
+.selected-info p{
+  margin: 0;
+}
+
+.connect{
+  text-align: center;
+  font-size: 23px;
+  color:white;
+  font-weight: bold;
+  background-color: rgba(50, 143, 45, 0.5);;
+}
+
+@media screen and (max-width: 800px){
+  .Logo-box, .Tittle-box, .coord {
+    width: 100%;
+}
+}
+
+
+@media screen and (max-width: 400px){
+  .Contenedor{
+    width: 100%;
   }
   
+  .Logo-box, .Tittle-box, .coord {
+    width: 100%;
+}
+#tipag {
+  font-size: 50px;
+  text-align:left;
+  margin-top: 20px;
+}
+
+#tituloc {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.datos {
+  font-size: 18px;
+}
+
+#logo {
+  height: 100px;
+  margin: 10px auto;
+  display: block;
+}
+#map {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
 }

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
-    <link rel="stylesheet" type="text/css" href="estilo2.css"/>
-    <title>Pagina historicos</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <title>Página historicos</title>
 </head>
 <body>
-    
+    <div class="Contenedor">
     <div class="Header">
        
         <a href=""><img src="/logo.png"  id="logo" alt=""></a>
@@ -20,11 +20,20 @@
         
     </div>
     <div class="mapa">
-        <h1>Ruta recorrida por vehiculo</h1>
-        <div id="map"></div>
+        <h1>Ruta recorrida por vehículo</h1>
+        <div class="container-map">
+            <div class="selected-info">
+                <label>Fecha:<p id="selected-date">--/--/----</p></label>
+                <label>Hora:<p id="selected-hour">--:--</p></label>
+            </div>
+            <div id="map"></div>
+        </div>
     </div>
     <div class="mapa">
-
+        <label for="mySlider">Radio:</label>
+        <input type="range" id="mySlider" name="mySlider" min="0" max="100" step="1" value="50">
+        <label for="mySlider2">Datafound:</label>
+        <input type="range" id="Datafound" name="Datafound" min="0" max="0" step="1" value="0">
         <h1> Vista históricos</h1>
         <button onclick="historico()">MOSTRAR</button>
         <label for="start">Start date:</label>
@@ -40,38 +49,16 @@
         <button onclick="window.location.href='/'">Volver a la página principal</button>
 
     </div>
-
+    </div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
     <script src="iniciomapa.js"></script>
-    <script>
-        const startDateInput = document.querySelector('#start');
-        const endDateInput = document.querySelector('#end');
-        startDateInput.addEventListener('input', () => {
-          endDateInput.min = startDateInput.value;
-          if (new Date(endDateInput.value).getTime() < new Date(startDateInput.value).getTime()) {
-            endDateInput.value = startDateInput.value;
-          }
-        });
-    </script>
-      
-
-    <script>
-        const startDatePicker = document.getElementById("start");
-        const endDatePicker = document.getElementById("end");
-        const fechaHoy = new Date();
-        const timeZoneOffset = -5 * 60; // 5 horas menos que GMT
-        fechaHoy.setTime(fechaHoy.getTime() + timeZoneOffset * 60 * 1000);
-        const anio = fechaHoy.getFullYear();
-        const mes = fechaHoy.getMonth() + 1; // Sumamos 1 porque los meses van de 0 a 11
-        const dia = fechaHoy.getDate();
-        const fechaActual = `${anio}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
-        console.log("Today in Colombia: ", fechaActual);
-        startDatePicker.setAttribute("max", fechaActual);
-        endDatePicker.setAttribute("max", fechaActual);
-
-    </script>
+    <script src="/datelimit.js"></script>
+<script>
+  window.setDateInputs();
+  window.setCurrentDate();
+</script>
 
 </body>
 </html>
