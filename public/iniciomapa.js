@@ -6,21 +6,30 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let marker = L.marker([11.019067669425738,-74.85135899187047]).addTo(map);
+let Icon = L.icon({
+  iconUrl: '/marca2.png',
+  iconSize: [90, 90],
+  iconAnchor: [25, 90],
+});
+let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
 vector=[[11.0071,-74.8092]]
-polyline = L.polyline(vector, {color: 'red'}).addTo(map);
+polyline = L.polyline(vector, {color: 'green'}).addTo(map);
+
+
 
 function historico() {
-  const startDateInput = document.querySelector('#start').value;
-  const endDateInput = document.querySelector('#end').value;
-  const startDateParts = startDateInput.split('-');
-  const endDateParts = endDateInput.split('-');
-  const startTimeInput = document.querySelector('#start-time').value;
-  const endTimeInput = document.querySelector('#end-time').value;
-  const startTime = startTimeInput.padStart(5, '0');
-  const endTime = endTimeInput.padStart(5, '0');
-  const startDate = `'${startDateParts[0]}-${startDateParts[1]}-${startDateParts[2]} ${startTime}:00'`;
-  const endDate = `'${endDateParts[0]}-${endDateParts[1]}-${endDateParts[2]} ${endTime}:00'`;
+  const startDateInput0 = document.querySelector('input[type="datetime-local"][id="start"]').value;
+  const startDateInput = startDateInput0.split("T")[0];
+  const startTimeInput = startDateInput0.split("T")[1];
+  const endDateInput0 = document.querySelector('input[type="datetime-local"][id="end"]').value;
+  const endDateInput = endDateInput0.split("T")[0];
+  const endTimeInput = endDateInput0.split("T")[1];
+  const startDate = startDateInput+' '+startTimeInput+':00'
+  const endDate = endDateInput+' '+endTimeInput+':00'
+  //const startTimeInput = document.querySelector('start-time').value;
+  //const endTimeInput = document.querySelector('end-time').value;
+  //const startDate = "'"+startDateParts[2] + '/' + startDateParts[1] + '/' + startDateParts[0]+"'";
+  //const endDate = "'"+endDateParts[2] + '/' + endDateParts[1] + '/' + endDateParts[0]+"'";
   
   fetch(`/historico?inicio=${startDate}&final=${endDate}`)
     .then(response => response.json())
@@ -68,11 +77,6 @@ setInterval(() => {
     });
 
 
-}, 1000);
+}, 1001);
     
    
-let Icon = L.icon({
-  iconUrl: '/marca.png',
-  iconSize: [90, 90],
-  iconAnchor: [25, 90],
-});
