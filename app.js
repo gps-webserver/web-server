@@ -48,6 +48,7 @@ app.listen(app.get('port'), () =>{
 //sniffer
 const dgram = require('dgram');
 const { request } = require('http');
+const { parseString } = require('fast-csv');
 const PORT = 52000;
 const socket = dgram.createSocket('udp4');
 socket.bind(PORT);
@@ -108,14 +109,16 @@ app.get('/historico', async (req, res) => {
   const inicio = req.query.inicio;
   const final = req.query.final;
 
-  sequelize.query(`SELECT latitud, longitud
+  sequelize.query(`SELECT DISTINCT latitud,longitud,fecha,hora
   FROM test.coords
   WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
   BETWEEN '${inicio}' AND '${final}'
   ORDER BY id DESC;`, { raw: true }).then(function(rows) {
     const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora])
     res.json({
-      rows: values
+      rows: values,
+      todo: todo
     });
   });
 });
