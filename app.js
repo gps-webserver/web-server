@@ -92,16 +92,7 @@ app.get('/coords', (req, res) => {
     time: dataf.hora,
   });
 });
-app.get('/linea',async (req, res) => {
-  sequelize.query('SELECT distinct latitud,longitud FROM test.coords order by id desc limit 50', { raw: true }).then(function(rows){
-    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
-    res.json({
-      rows:values
-    });
-  })
-  
-  
-});
+
 
 
 
