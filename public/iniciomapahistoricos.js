@@ -71,7 +71,10 @@ function historico() {
       
       updatePolyline(data.rows);
       array_todo=data.todo
-      
+      if (array_todo.length === 0) {
+        alert("No hay datos que mostrar entre "+startDateInput+" "+startTimeInput+" y "+endDateInput+" "+endTimeInput);
+      }
+    
     });
 }
 
