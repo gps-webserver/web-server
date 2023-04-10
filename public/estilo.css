@@ -1,9 +1,43 @@
 body {
   background-image: url(/FONDOGPS.png);
-  background-size: contain;
-  font-family: Arial, Helvetica, sans-serif;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Titillium Web', sans-serif;
 }
 
+.mapa-right h1 {
+  background-color: #BEAED3;
+  
+}
+
+.bg-purple {
+  background-color: #BEAED3;
+  color: rgb(3, 2, 2);
+}
+
+.card.bg-purple .card-header {
+  background-color: #553184;
+  color: rgb(255, 254, 254);
+}
+
+.front-size-nav{
+  font-size: 20px;
+}
+
+/* Para poder centrar el logo*/
+.navbar-brand {
+  width: 100%;
+}
+
+.navbar-brand img {
+  max-width: 150px;
+  height: auto;
+}
+.navbar {
+  padding: 0 20px;
+}
+
+/* Para configurar mapa */
 #map {
   z-index: 0;
   height: 90vh;
@@ -12,31 +46,44 @@ body {
   align-self: center;
 }
 
-.Contenedor {
-  width: 100%;
-  max-width: 2000px;
-  margin: 0 auto;
-  overflow:hidden;
-
+/* Haciendo la redirección a históricos*/
+#redhistoricos{
+  background-color: #BEAED3;
+  padding: 50px 0 30x 0;
+  text-align: center;
+  margin-top: 40px;
 }
 
-.Header{
+/* Fondo anuncio 2da pag 
+.bg-anuncio {
+  background-color: #D0CDD3 !important;
+}*/
 
+.Header{
   display: flex;
   color: white;
   width: 100%;
   flex-wrap: wrap;
+  }
+  .Header1{
+    display: flex;
+    color: white;
+    width: 100%;
+    flex-wrap: wrap;
+    }
   
+  .Logo-box{
+  width: 50%;
   
 
-}
-
-.Logo-box{
-  width: 30%;
+  }
   
-}
+  .Logo-box img{
+  max-width: 100%;
+  height: auto;
+  }
 .Tittle.box{
-  width: 40%;
+  width: 50%;
   overflow: hidden;
   
 }
@@ -55,7 +102,7 @@ body {
   
 }
 .coord{
-  width: 30%;
+  width: 100%;
   
 }
 
@@ -96,8 +143,17 @@ body {
   color: black;
 }
 
+.mapadata {
+  width: 100%;
+
+
+}
 .container-map {
   position: relative;
+}
+.data {
+  width: 35%;
+  float:left;
 }
 
 .mapa{
@@ -107,6 +163,9 @@ body {
   font-size: 23px;
   color:white;
   font-weight: bold;
+  width: 100%;
+  float:right;
+  height: 100%;
 
 }
 
@@ -180,3 +239,4 @@ body {
 }
 
 }
+

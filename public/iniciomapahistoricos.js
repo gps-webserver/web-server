@@ -12,9 +12,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 }).addTo(map);
 
 let Icon = L.icon({
-  iconUrl: '/marca2.png',
-  iconSize: [90, 90],
-  iconAnchor: [25, 90],
+  iconUrl: '/CARROGPS.png',
+  iconSize: [58, 40],
+  iconAnchor: [29, 40],
 });
 let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
 vector=[[11.0071,-74.8092]]
@@ -37,7 +37,7 @@ map.on('click', function(e) {
   color: 'red', // Color del borde del círculo
   fillColor: '#f03', // Color de relleno del círculo
   fillOpacity: 0.5 // Opacidad del relleno del círculo
-}).addTo(map);
+}).addTo(map);  
 
   // Guardar la latitud y longitud en un objeto
   let coordenadas = {latitud: latitud, longitud: longitud};
