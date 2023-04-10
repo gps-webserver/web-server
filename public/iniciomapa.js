@@ -6,7 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 }).addTo(map);
 
 let Icon = L.icon({
-  iconUrl: '/marca2.png',
+  iconUrl: '/CARROGPSq.png',
   iconSize: [90, 90],
   iconAnchor: [25, 90],
 });
