@@ -8,8 +8,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 let Icon = L.icon({
   iconUrl: '/CARROGPS.png',
   iconSize: [58, 40],
-  iconAnchor: [29, 40],
+  iconAnchor: [29, 40], 
 });
+
 let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
 vector=[[11.0071,-74.8092]]
 polyline = L.polyline(vector, {color: 'purple'}).addTo(map);

@@ -10,10 +10,11 @@
     crossorigin=""/>
     <link rel="stylesheet" type="text/css" href="estilo.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Página historicos</title>
+    <title>MYGPS-Históricos</title>
     <link rel="stylesheet" type="text/css" href="estilo.css"/>
 </head>
 <body>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #BEAED3;">
     <div class="container-fluid">
@@ -33,6 +34,8 @@
         </div>
     </div>
 </nav>
+
+<!-- Header -->
 
 <header id="header">
     <div class="container-fluid mt-5 mb-5">
@@ -58,7 +61,7 @@
                             <input type="range" id="mySlider" name="mySlider" min="0" max="100" step="1" value="50" class="form-control-range">
                         </div>
                         <div class="form-group">
-                            <label for="Datafound">Datafound:</label>
+                            <label for="Datafound">Linea de tiempo:</label>
                             <input type="range" id="Datafound" name="Datafound" min="0" max="0" step="1" value="0" class="form-control-range">
                         </div>
                         <button onclick="historico()" class="btn btn-primary mt-3" style="background-color: #553184;">MOSTRAR</button>
@@ -70,7 +73,6 @@
                             <label for="end">Fecha Final:</label>
                             <input type="datetime-local" id="end" name="trip-end" value="" min="" max="" class="form-control">
                         </div>
-                        <div class="note text-center bg-anuncio" style="padding-top: 15px;">Para abrir el calendario, pulsar el icono.</div>
                     </div>
                 </div>
             </div>
