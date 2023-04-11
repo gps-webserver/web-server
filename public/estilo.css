@@ -1,8 +1,55 @@
 body {
-  background-image: url(/BACK.jpg) ;
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(/FONDOGPS.png);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Titillium Web', sans-serif;
 }
 
+
+
+.mapa-right h1 {
+  background-color: #BEAED3;
+  
+}
+
+/* Fondo de coordenadas  */
+.card-body td.bg-purple {
+  background-color: #553184;
+    color: white;
+} 
+
+.bg-purple {
+  background-color: #BEAED3;
+  color: rgb(3, 2, 2);
+}
+.bg-purplee {
+  background-color: #553184;
+  color: rgb(255, 255, 255);
+}
+
+.card.bg-purple .card-header {
+  background-color: #553184;
+  color: rgb(255, 254, 254);
+}
+
+.front-size-nav{
+  font-size: 20px;
+}
+
+/* Para poder centrar el logo*/
+.navbar-brand {
+  width: 100%;
+}
+
+.navbar-brand img {
+  max-width: 150px;
+  height: auto;
+}
+.navbar {
+  padding: 0 20px;
+}
+
+/* Para configurar mapa */
 #map {
   z-index: 0;
   height: 90vh;
@@ -11,37 +58,51 @@ body {
   align-self: center;
 }
 
-.Contenedor {
-  width: 100%;
-  max-width: 2000px;
-  margin: 0 auto;
-  overflow:hidden;
-
+/* Haciendo la redirección a históricos*/
+#redhistoricos{
+  background-color: #BEAED3;
+  padding: 50px 0 30x 0;
+  text-align: center;
+  margin-top: 40px;
 }
-
+.tamano-coords{
+  font-size: 19px;
+}
 .Header{
-
-  background-color: rgba(15, 69, 12,0.5);
   display: flex;
   color: white;
   width: 100%;
   flex-wrap: wrap;
+  }
+  .Header1{
+    display: flex;
+    color: white;
+    width: 100%;
+    flex-wrap: wrap;
+    }
+  
+  .Logo-box{
+  width: 50%;
   
 
-}
-
-.Logo-box{
-  width: 30%;
+  }
   
-}
+  .Logo-box img{
+  max-width: 100%;
+  height: auto;
+  }
 .Tittle.box{
-  width: 40%;
+  width: 50%;
+  overflow: hidden;
+  
 }
 #tipag{
   font-size: 70px;
   margin-left: 8%;
   width: 100%;
   text-align: center;
+  margin-top: 23%;
+  
 }
 #logo  {
   height: auto;
@@ -50,27 +111,32 @@ body {
   
 }
 .coord{
-  width: 30%;
+  width: 100%;
+  
 }
 
 .Header .coord{
-  background-color: rgba(44, 158, 38, 0.5);
   font-size: 15px;
   margin-left: auto;
+  
   
 }
 .Header .coord .datos{
 
   color:black;
-  margin-left: 15px;
- 
+  margin-left: 10px;
+  margin-top: 30px;
   
 }
+
 #tituloc{
   color: white;
   font-size: 35px;
   font-weight: bold;
   margin-left: 10px;
+  
+  
+  
 }
 #lat{
   color: black;
@@ -85,8 +151,17 @@ body {
   color: black;
 }
 
+.mapadata {
+  width: 100%;
+
+
+}
 .container-map {
   position: relative;
+}
+.data {
+  width: 35%;
+  float:left;
 }
 
 .mapa{
@@ -96,7 +171,10 @@ body {
   font-size: 23px;
   color:white;
   font-weight: bold;
-  background-color: rgba(50, 143, 45, 0.5);;
+  width: 100%;
+  float:right;
+  height: 100%;
+
 }
 
 .selected-info {
@@ -125,7 +203,6 @@ body {
   font-size: 23px;
   color:white;
   font-weight: bold;
-  background-color: rgba(50, 143, 45, 0.5);;
 }
 
 @media screen and (max-width: 800px){
@@ -170,3 +247,4 @@ body {
 }
 
 }
+
