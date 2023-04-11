@@ -22,6 +22,10 @@ body {
   background-color: #BEAED3;
   color: rgb(3, 2, 2);
 }
+.bg-purplee {
+  background-color: #553184;
+  color: rgb(255, 255, 255);
+}
 
 .card.bg-purple .card-header {
   background-color: #553184;
@@ -61,7 +65,9 @@ body {
   text-align: center;
   margin-top: 40px;
 }
-
+.tamano-coords{
+  font-size: 19px;
+}
 .Header{
   display: flex;
   color: white;
