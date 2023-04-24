@@ -4,61 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
-    <link rel="stylesheet" type="text/css" href="estilo2.css"/>
-    <title>Página historicos</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>MYGPS-Históricos</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
 </head>
 <body>
-    <div class="Contenedor">
-    <div class="Header">
-       
-        <a href=""><img src="/logo.png"  id="logo" alt=""></a>
-        
-        <h1 id="tipag">LOCATION GPS</h1>
-        
-    </div>
-    <div class="mapa">
-        <h1>Ruta recorrida por vehículo</h1>
-        <div class="container-map">
-            <div class="selected-info">
-                <label>Fecha:<p id="selected-date">--/--/----</p></label>
-                <label>Hora:<p id="selected-hour">--:--</p></label>
-            </div>
-            <div id="map"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #BEAED3;">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex justify-content-center" href="/"> <img src="/LOGOGPS.png" alt="" style="max-width: 180px; height: auto;"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" aria-current="page" href="/">Inicio</a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="mapa">
-        <label for="mySlider">Radio:</label>
-        <input type="range" id="mySlider" name="mySlider" min="0" max="100" step="1" value="50">
-        <label for="mySlider2">Datafound:</label>
-        <input type="range" id="Datafound" name="Datafound" min="0" max="0" step="1" value="0">
-        <h1> Vista históricos</h1>
-        <button onclick="historico()">MOSTRAR</button>
-        <label for="start">Start date:</label>
-        <input type="datetime-local" id="start" name="trip-start" value="" min="" max="">
-        <label for="end">End date:</label>
-        <input type="datetime-local" id="end" name="trip-end" value="" min="" max=""> 
+</nav>
 
+<!-- Header -->
+
+<header id="header">
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row d-flex">
+            <div class="col-md-8">
+                <div class="mapa-right text-center">
+                    <h1>Ruta recorrida por vehículo</h1>
+                    <div class="container-map">
+                        <div class="selected-info">
+                            <label>Fecha:<p id="selected-date">--/--/----</p></label>
+                            <label>Hora:<p id="selected-hour">--:--</p></label>
+                        </div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background-color: #BEAED3;">
+                    <div class="card-body">
+                        <h2 class="card-title text-center" style="background-color: #553184; color: #fff; padding: 10px;">Vista históricos</h2>
+                        <div class="form-group">
+                            <label for="mySlider">Radio:</label>
+                            <input type="range" id="mySlider" name="mySlider" min="0" max="100" step="1" value="50" class="form-control-range">
+                        </div>
+                        <div class="form-group">
+                            <label for="Datafound">Linea de tiempo:</label>
+                            <input type="range" id="Datafound" name="Datafound" min="0" max="0" step="1" value="0" class="form-control-range">
+                        </div>
+                        <button onclick="historico()" class="btn btn-primary mt-3" style="background-color: #553184;">MOSTRAR</button>
+                        <div class="form-group mt-3">
+                            <label for="start">Fecha Inicio:</label>
+                            <input type="datetime-local" id="start" name="trip-start" value="" min="" max="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="end">Fecha Final:</label>
+                            <input type="datetime-local" id="end" name="trip-end" value="" min="" max="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="connect">
-
-        <h1> </h1>
-        <button onclick="window.location.href='/'">Volver a la página principal</button>
-
-    </div>
-    </div>
+</header>
+    
+    
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
-    <script src="iniciomapa.js"></script>
+    <script src="iniciomapahistoricos.js"></script>
     <script src="/datelimit.js"></script>
 <script>
   window.setDateInputs();
   window.setCurrentDate();
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -7,6 +7,7 @@ function cora(){
       document.getElementById('long').innerText = data.long;
       document.getElementById('date').innerText = data.date;
       document.getElementById('time').innerText = data.time;
+      document.getElementById('sonido').innerText = data.sonido;
     })
     .catch(error => console.error(error));
    

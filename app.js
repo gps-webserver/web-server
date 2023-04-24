@@ -7,6 +7,7 @@ const fs = require('fs');
 const { QueryTypes } = require("sequelize");
 const Sequelize = require('sequelize');
 const dotenv = require("dotenv");
+const heatmap = require('heatmap.js');
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env.PASS1, { dialect: 'mysql', host: process.env.HOST1
@@ -59,12 +60,12 @@ socket.on('listening', () =>{
 socket.on('message',  (info,rinfo) => {
   dataf = JSON.parse(info);
   console.log(dataf);
-  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}\")`);
+  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${dataf.sonido}\",\"${rinfo.address}\")`);
   gpsCoords = {
     latitud: dataf.latitud,
     longitud: dataf.longitud
   };
-  const content = `Latitud: ${dataf.latitud}, Longitud: ${dataf.longitud}, Fecha: ${dataf.fecha}, Hora: ${dataf.hora}\n`;
+  const content = `Latitud: ${dataf.latitud}, Longitud: ${dataf.longitud}, Fecha: ${dataf.fecha}, Hora: ${dataf.hora}\n, Sonido: ${dataf.sonido}`;
   
 });
 
@@ -75,6 +76,7 @@ app.get('/', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
+    song: dataf.sonido,
   });
 });
 
@@ -84,12 +86,15 @@ app.get('/pagina-historicos', (req, res) => {
   });
 });
 
+
 app.get('/coords', (req, res) => {
   res.json({
     lat: dataf.latitud,
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
+    song: dataf.sonido,
+
   });
 });
 app.get('/linea',async (req, res) => {
@@ -125,3 +130,4 @@ app.get('/historico', async (req, res) => {
 
 
 //npm run dev
+//hola

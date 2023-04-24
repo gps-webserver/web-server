@@ -5,22 +5,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let Icon = L.icon({
-  iconUrl: '/CARROGPS2.png',
-  iconSize: [59, 43],
-  iconAnchor: [32, 43], 
-});
 
 let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
-vector=[[11.0071,-74.8092]]
+vector=[[11.0071,-74.8092, 5]]
 heatLayer = L.heatLayer(vector, {radius: 25, blur: 15, maxZoom:17, }).addTo(map);
 
-function updateLastLocation(lat,lng){
+function updateLastLocation(lat,lng, son){
   //mover el marcador
-  marker.setLatLng([lat, lng]);
+  marker.setLatLng([lat, lng, son]);
   //centrar el mapa
-  map.panTo([lat, lng]);
-  // crear la polilinea en tiempo real
+  map.panTo([lat, lng, son]);
+  // crear la  en tiempo real
   heatLayer.addLatLng([lat, lng, son]);
 }
 
