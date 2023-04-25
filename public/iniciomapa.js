@@ -19,7 +19,7 @@ function updateLastLocation(lat,lng){
   //mover el marcador
   marker.setLatLng([lat, lng]);
   //centrar el mapa
-  map.panTo([lat, lng]);
+  map.panTo([lat, lng],20);
   // crear la polilinea en tiempo real
   polyline.addLatLng([lat, lng]);
 }
