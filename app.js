@@ -127,7 +127,7 @@ app.get('/historico', async (req, res) => {
     });
   });
 });
-
+ 
 
 //npm run dev
 //hola

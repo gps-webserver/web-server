@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize");
+
 let map = L.map('map').setView([11.019067669425738,-74.85135899187047],50)
 var polyline;
 //Agregar tilelAyer mapa base desde openstreetmap
@@ -12,14 +14,16 @@ let Icon = L.icon({
 });
 
 let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
-vector=[[11.0071,-74.8092]]
+punto = sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
+const vector = punto.map((obj) => [obj.latitud, obj.longitud]);
+//[[11.0071,-74.8092]]
 polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 
 function updateLastLocation(lat,lng){
   //mover el marcador
   marker.setLatLng([lat, lng]);
   //centrar el mapa
-  map.panTo([lat, lng],20);
+  map.panTo([lat, lng]);
   // crear la polilinea en tiempo real
   polyline.addLatLng([lat, lng]);
 }
