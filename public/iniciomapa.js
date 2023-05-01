@@ -13,9 +13,10 @@ let Icon = L.icon({
   iconAnchor: [32, 43], 
 });
 
-let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
 punto = sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
-const vector = punto.map(obj => [obj.latitud, obj.longitud]);
+vector = punto.map(obj => [obj.latitud, obj.longitud]);
+let marker = L.marker(vector ,{icon:Icon}).addTo(map);
+//[11.019067669425738,-74.85135899187047]
 //[[11.0071,-74.8092]]
 polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 
