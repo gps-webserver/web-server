@@ -1,4 +1,7 @@
-let map = L.map('map').setView([11.019067669425738,-74.85135899187047],50)
+punto = Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
+puntoinicio = punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+vector =[puntoinicio]
+let map = L.map('map').setView(vector,50)
 var polyline;
 //Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
@@ -11,8 +14,9 @@ let Icon = L.icon({
   iconAnchor: [32, 43], 
 });
 
-let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
-vector=[[11.0071,-74.8092]]
+let marker = L.marker(vector,{icon:Icon}).addTo(map);
+//[11.019067669425738,-74.85135899187047]
+//vector=[[11.0071,-74.8092]]
 polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 
 function updateLastLocation(lat,lng){
