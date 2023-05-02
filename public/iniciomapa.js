@@ -1,5 +1,6 @@
-const punto = await Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
-const vector = punto.map(objeto => [parseFloat(objeto.latitud), parseFloat(objeto.longitud)]);
+async function cargarMapa() {
+  const punto = await Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
+  const vector = punto[0].map(objeto => [parseFloat(objeto.latitud), parseFloat(objeto.longitud)]);
 
 let map = L.map('map').setView(vector,50);
 var polyline;
@@ -37,4 +38,4 @@ setInterval(() => {
       
     });
 }, 1001);
-
+}
