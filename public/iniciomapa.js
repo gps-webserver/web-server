@@ -14,7 +14,7 @@ let Icon = L.icon({
 });
 
 punto = Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
-vector = punto.map(obj => [obj.latitud, obj.longitud]);
+vector = punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
 let marker = L.marker(vector ,{icon:Icon}).addTo(map);
 //[11.019067669425738,-74.85135899187047]
 //[[11.0071,-74.8092]]
