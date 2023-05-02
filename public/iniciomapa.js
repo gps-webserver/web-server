@@ -1,5 +1,5 @@
 const punto = await Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
-const vector = punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+const vector = punto.map(objeto => [parseFloat(objeto.latitud), parseFloat(objeto.longitud)]);
 
 let map = L.map('map').setView(vector,50);
 var polyline;
