@@ -39,3 +39,4 @@ setInterval(() => {
     });
 }, 1001);
 }
+cargarMapa();
