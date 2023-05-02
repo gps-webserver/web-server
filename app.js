@@ -106,8 +106,7 @@ app.get('/historico', async (req, res) => {
   BETWEEN '${inicio}' AND '${final}'
   ORDER BY id DESC;`, { raw: true }).then(function(rows) {
     const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
-    const todo =rows[0]
-    (obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
+    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
     res.json({
       rows: values,
       todo: todo

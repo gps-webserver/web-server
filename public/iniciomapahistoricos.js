@@ -101,10 +101,10 @@ function updatePolyline(rows) {
 Datafound.addEventListener("input", function() {
   let selectedDate = document.getElementById("selected-date")
   let selectedHour = document.getElementById("selected-hour")
-  let lat=x[Datafound.value][0]
-  let lng=x[Datafound.value][1]
-  selectedDate.innerHTML = x[Datafound.value][2]
-  selectedHour.innerHTML = x[Datafound.value][3]
+  let lat = x[x.length - 1 - Datafound.value][0]
+  let lng = x[x.length - 1 - Datafound.value][1]
+  selectedDate.innerHTML = x[x.length - 1 - Datafound.value][2]
+  selectedHour.innerHTML = x[x.length - 1 - Datafound.value][3]
   marker.setLatLng([lat,lng]);
   map.panTo([lat,lng]);
 });
