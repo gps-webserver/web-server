@@ -1,7 +1,7 @@
 const punto = await Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
-const vector = [punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)])];
+const vector = punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
 
-let map = L.map('map').setView(vector,50)
+let map = L.map('map').setView(vector,50);
 var polyline;
 //Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
