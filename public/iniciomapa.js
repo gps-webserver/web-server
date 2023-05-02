@@ -1,4 +1,4 @@
-punto = Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
+const punto = Sequelize.query('SELECT latitud,longitud FROM test.coords WHERE id = (SELECT MAX(id) FROM test.coords)', { raw: true });
 puntoinicio = punto.map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
 vector =[puntoinicio]
 let map = L.map('map').setView([11.019067669425738,-74.85135899187047],50)
