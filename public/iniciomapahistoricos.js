@@ -11,13 +11,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+
 let Icon = L.icon({
   iconUrl: '/CARROGPS2.png',
-  iconSize: [59, 43],
-  iconAnchor: [32, 43], 
+  iconSize: [58, 40],
+  iconAnchor: [29, 40],
 });
 let marker = L.marker([11.019067669425738,-74.85135899187047],{icon:Icon}).addTo(map);
-vector=[[11.0071,-74.8092]]
+vector=[[]]
 polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 
 const slider = document.getElementById("mySlider");
@@ -45,11 +46,20 @@ map.on('click', function(e) {
   console.log('array_todo',array_todo)
   console.log('es la x',x)
   Datafound.max=x.length-1
-
-  
-  
 });
 
+function updateheatmap(rows) {
+  heatdata = rows.map(item => [item[0], item[1], item[4]]);
+  L.heatLayer(heatdata, {
+      radius: 30,
+      blur: 15,
+      gradient: {0.2: 'blue', 0.4: 'cyan', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'},
+      maxZoom: 17,
+      max: 80, 
+      min: 40 
+  }).addTo(map);
+  console.log(heatdata)
+  } 
 function obtener_radio(todo, coordenadas,radio) {
   return (todo[0] - coordenadas.latitud) ** 2 + (todo[1] - coordenadas.longitud) ** 2 <= (radio/(100*111.10)) ** 2;
 }  
@@ -71,6 +81,7 @@ function historico() {
       
       updatePolyline(data.rows);
       array_todo=data.todo
+      updateheatmap (array_todo);
       if (array_todo.length === 0) {
         alert("No hay datos que mostrar entre "+startDateInput+" "+startTimeInput+" y "+endDateInput+" "+endTimeInput);
       }
@@ -78,10 +89,8 @@ function historico() {
     });
 }
 
-
 function updatePolyline(rows) {
   var coordsArray =rows
- 
   if (polyline) {
     polyline.setLatLngs(coordsArray);
   } else {
@@ -92,14 +101,10 @@ function updatePolyline(rows) {
 Datafound.addEventListener("input", function() {
   let selectedDate = document.getElementById("selected-date")
   let selectedHour = document.getElementById("selected-hour")
-  let lat=x[Datafound.value][0]
-  let lng=x[Datafound.value][1]
-  selectedDate.innerHTML = x[Datafound.value][2]
-  selectedHour.innerHTML = x[Datafound.value][3]
+  let lat = x[x.length - 1 - Datafound.value][0]
+  let lng = x[x.length - 1 - Datafound.value][1]
+  selectedDate.innerHTML = x[x.length - 1 - Datafound.value][2]
+  selectedHour.innerHTML = x[x.length - 1 - Datafound.value][3]
   marker.setLatLng([lat,lng]);
   map.panTo([lat,lng]);
-
 });
-
-
-    
