@@ -74,6 +74,7 @@ app.get('/', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
+    sonido: dataf.sonido,
   });
 });
 
