@@ -5,6 +5,7 @@ let x=[[]]
 let circle;
 let radio=50
 var Datafound = document.getElementById('Datafound');
+var heatLayer = null;
 
 //Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
@@ -50,16 +51,23 @@ map.on('click', function(e) {
 
 function updateheatmap(rows) {
   heatdata = rows.map(item => [item[0], item[1], item[4]]);
-  L.heatLayer(heatdata, {
+  var newHeatLayer = L.heatLayer(heatdata, {
       radius: 30,
       blur: 15,
       gradient: {0.2: 'blue', 0.4: 'cyan', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red'},
       maxZoom: 17,
       max: 80, 
-      min: 40 
-  }).addTo(map);
+      min: 40   })
+
+      if (heatLayer !== null) { // Si la capa actual existe, la removemos antes de agregar la nueva capa
+        map.removeLayer(heatLayer);
+      }
+      
+      heatLayer = newHeatLayer;  // Actualizamos la referencia de la capa actual
+      heatLayer.addTo(map);
   console.log(heatdata)
   } 
+
 function obtener_radio(todo, coordenadas,radio) {
   return (todo[0] - coordenadas.latitud) ** 2 + (todo[1] - coordenadas.longitud) ** 2 <= (radio/(100*111.10)) ** 2;
 }  

@@ -9,8 +9,8 @@ function cora(){
       document.getElementById('time').innerText = data.time;
     })
     .catch(error => console.error(error));
-   
   }
+
 
 cora()
 setInterval(cora,5000)
