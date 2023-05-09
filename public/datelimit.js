@@ -22,7 +22,7 @@ function setCurrentDate() {
   const startDatePicker = document.getElementById("start");
   const endDatePicker = document.getElementById("end");
   const fechaHoy = new Date();
-  const timeZoneOffset = -5 * 60; // 4 horas menos que GMT para Colombia
+  const timeZoneOffset = 0; // 4 horas menos que GMT para Colombia
   fechaHoy.setTime(fechaHoy.getTime() + timeZoneOffset * 60 * 1000);
   const anio = fechaHoy.getFullYear();
   const mes = fechaHoy.getMonth() + 1; // Sumamos 1 porque los meses van de 0 a 11
