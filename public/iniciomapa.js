@@ -47,7 +47,7 @@ let Icon1 = L.icon({
 
 let Icon2 = L.icon({
   iconUrl: '/icono2.png',
-  iconSize: [58, 40],
+  iconSize: [54, 40],
   iconAnchor: [29, 40],
 });
 
