@@ -9,8 +9,7 @@ const Sequelize = require('sequelize');
 const dotenv = require("dotenv");
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env.PASS1, { dialect: 'mysql', host: process.env.HOST1
- })
+const sequelize = new Sequelize(process.env.NAME1,process.env.USER1, process.env.PASS1, { dialect: 'mysql', host: process.env.HOST1})
 
 let gpsCoords = {latitud: 0, longitud: 0};
 var mensaje = ''
@@ -30,6 +29,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use('/historicos', require('./routes/index.js'));
+
 //routes
 app.use(routes);
 
@@ -46,6 +47,7 @@ app.listen(app.get('port'), () =>{
 //sniffer
 const dgram = require('dgram');
 const { request } = require('http');
+const { parseString } = require('fast-csv');
 const PORT = 52000;
 const socket = dgram.createSocket('udp4');
 socket.bind(PORT);
@@ -56,7 +58,7 @@ socket.on('listening', () =>{
 socket.on('message',  (info,rinfo) => {
   dataf = JSON.parse(info);
   console.log(dataf);
-  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}\")`);
+  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}"\,\"${dataf.sonido}\",\"${dataf.id}\")`);
   gpsCoords = {
     latitud: dataf.latitud,
     longitud: dataf.longitud
@@ -72,6 +74,14 @@ app.get('/', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
+    sonido: dataf.sonido,
+    id: dataf.id,
+  });
+});
+
+app.get('/pagina-historicos', (req, res) => {
+  res.render('pagina-historicos', {
+    ltitle: 'historicos'
   });
 });
 
@@ -81,31 +91,31 @@ app.get('/coords', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
+    sonido: dataf.sonido,
+    id: dataf.id,
   });
 });
-app.get('/linea',async (req, res) => {
-  sequelize.query('SELECT distinct latitud,longitud FROM test.coords order by id desc limit 50', { raw: true }).then(function(rows){
-    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
-    res.json({
-      rows:values
-    });
-  })
-  
-  
-});
 
 
-app.get('/historico',async (req, res) => {
-  const inicio = req.query.inicio 
-  const final = req.query.final
-  sequelize.query(`SELECT distinct latitud,longitud FROM test.coords WHERE fecha BETWEEN ${inicio} AND ${final} order by id desc`, { raw: true }).then(function(rows){
-    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
+
+
+app.get('/historico', async (req, res) => {
+  const inicio = req.query.inicio;
+  const final = req.query.final;
+
+  sequelize.query(`SELECT DISTINCT latitud,longitud,fecha,hora,sonido
+  FROM test.coords
+  WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
+  BETWEEN '${inicio}' AND '${final}'
+  ORDER BY id DESC;`, { raw: true }).then(function(rows) {
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
+    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
     res.json({
-      rows:values
+      rows: values,
+      todo: todo
     });
-  })
-  
-  
+  });
 });
+
 
 //npm run dev
