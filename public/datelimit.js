@@ -15,7 +15,7 @@ function setDateInputs() {
     }
   });
 
-  endDateInput.min = new Date().toISOString().slice(0, 16);getElementById
+  endDateInput.min = new Date().toISOString().slice(0, 16);
 }
   
 function setCurrentDate() {
