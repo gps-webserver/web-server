@@ -58,7 +58,7 @@ socket.on('listening', () =>{
 socket.on('message',  (info,rinfo) => {
   dataf = JSON.parse(info);
   console.log(dataf);
-  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}"\,\"${dataf.sonido}\",${dataf.id})`);
+  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}"\,\"${dataf.sonido}\",\"${dataf.id}\")`);
   gpsCoords = {
     latitud: dataf.latitud,
     longitud: dataf.longitud

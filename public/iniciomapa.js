@@ -1,4 +1,4 @@
-let map = L.map('map').setView([11.019067669425738,-74.85135899187047],50)
+let map = L.map('map').setView([11.019067669425738,-74.85135899187047],20)
 
 let dataheat1 = [];
 let heat1 = L.heatLayer(dataheat1, {
@@ -39,31 +39,37 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let Icon = L.icon({
-  iconUrl: '/CARROGPS2.png',
+let Icon1 = L.icon({
+  iconUrl: '/icono1.png',
   iconSize: [58, 40],
   iconAnchor: [29, 40],
 });
 
-let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon }).addTo(map);
-let marker2 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon }).addTo(map);
-let vector1 = [[]], vector2 = [[]];
-polyline1 = L.polyline(vector1, { color: 'purple' }).addTo(map);
-polyline2 = L.polyline(vector2, { color: 'orange' }).addTo(map);
+let Icon2 = L.icon({
+  iconUrl: '/icono2.png',
+  iconSize: [58, 40],
+  iconAnchor: [29, 40],
+});
 
-function updateLastLocation(lat, lng, id) {
+let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon1 }).addTo(map);
+let marker2 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon2 }).addTo(map);
+let vector1 = [[]], vector2 = [[]];
+polyline1 = L.polyline(vector1, { color: 'blue' }).addTo(map);
+polyline2 = L.polyline(vector2, { color: 'purple' }).addTo(map);
+
+function updateLastLocation(lat, long, id) {
   if (id == 1) {
     // mover el marcador
-    marker1.setLatLng([lat, lng]);
+    marker1.setLatLng([lat, long]);
     // crear la polilinea en tiempo real
-    polyline1.addLatLng([lat, lng]);
-    map.panTo([lat, lng]);
+    polyline1.addLatLng([lat, long]);
+    
   } else if (id == 2) {
     // mover el marcador
-    marker2.setLatLng([lat, lng]);
+    marker2.setLatLng([lat, long]);
     // crear la polilinea en tiempo real
-    polyline2.addLatLng([lat, lng]);
-    map.panTo([lat, lng]);
+    polyline2.addLatLng([lat, long]);
+    
   }
 }
 
@@ -71,50 +77,10 @@ setInterval(() => {
   fetch('/coords')
     .then(response => response.json())
     .then(data => {
-      updateLastLocation(data.lat, data.long);
-    });
-}, 2001);
-
-setInterval(() => {
-  fetch('/coords')
-    .then(response => response.json())
-    .then(data => {
+      updateLastLocation(data.lat, data.long, data.id);
       updateHeatmap(data);
-      console.log(dataheat);
     });
-}, 10001);
+}, 3001);
 
-function updateMap(selectedId) {
-  // Ocultar todas las capas
-  heat1.removeFrom(map);
-  heat2.removeFrom(map);
-  marker1.removeFrom(map);
-  marker2.removeFrom(map);
-  polyline1.removeFrom(map);
-  polyline2.removeFrom(map);
-  
-  // Mostrar capas según la ID seleccionada
-  if (selectedId === "0") {
-    // Mostrar todas las capas
-    heat1.addTo(map);
-    heat2.addTo(map);
-    marker1.addTo(map);
-    marker2.addTo(map);
-    polyline1.addTo(map);
-    polyline2.addTo(map);
-  } else if (selectedId === "1") {
-    heat2.addTo(map);
-    marker2.addTo(map);
-    polyline2.addTo(map);
-  } else if (selectedId === "2"){
-    // Mostrar todas las capas
-    heat2.addTo(map);
-    marker2.addTo(map);
-    polyline2.addTo(map);
-  }
-}
 
-document.getElementById("id-selector").addEventListener("change", function() {
-  const selectedId = this.value;
-  updateMap(selectedId);
-});
+
