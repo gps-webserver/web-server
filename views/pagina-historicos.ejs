@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
-    <link rel="stylesheet" type="text/css" href="estilo.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>MYGPS-Históricos</title>
     <link rel="stylesheet" type="text/css" href="estilo.css"/>
@@ -27,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" aria-current="page" href="/">Página Principal</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" href="/pagina-historicos">Históricos</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -42,10 +44,34 @@
                     <h1>Ruta recorrida por vehículo</h1>
                     <div class="container-map">
                         <div class="selected-info">
-                            <label>Fecha:<p id="selected-date">--/--/----</p></label>
-                            <label>Hora:<p id="selected-hour">--:--</p></label>
+                            <label>Fecha: <p id="selected-date">--/--/----</p></label>
+                            <label>Hora: <p id="selected-hour">--:--</p></label>
+                            <label>Sonido: <p id="selected-sound">--</p><span> dB</span></label>
+
                         </div>
                         <div id="map"></div>
+                        <div class="heatmap-scale">
+                            <div class="scale-item">                              
+                              <div class="color-box" style="background-color: blue;"></div>
+                              <span class="scale-value">(0-20)dB</span>
+                            </div>
+                            <div class="scale-item">                                
+                                <div class="color-box" style="background-color: cyan;"></div>
+                                <span class="scale-value">(20-40)dB</span>
+                              </div> 
+                            <div class="scale-item">                              
+                              <div class="color-box" style="background-color: lime;"></div>
+                              <span class="scale-value">(40-60)dB</span>
+                            </div>
+                            <div class="scale-item">                              
+                              <div class="color-box" style="background-color: yellow;"></div>
+                              <span class="scale-value">(60-80)dB</span>
+                            </div>
+                            <div class="scale-item">                              
+                              <div class="color-box" style="background-color: red;"></div>
+                              <span class="scale-value">(80-100)dB</span>
+                            </div>                                                                      
+                          </div>   
                     </div>
                 </div>
             </div>
@@ -81,6 +107,7 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
     <script src="iniciomapahistoricos.js"></script>
     <script src="/datelimit.js"></script>
 <script>

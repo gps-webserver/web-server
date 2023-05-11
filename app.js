@@ -60,7 +60,7 @@ socket.on('listening', () =>{
 socket.on('message',  (info,rinfo) => {
   dataf = JSON.parse(info);
   console.log(dataf);
-  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}"\,\"${dataf.sonido}\")`);
+  const {results, metadata} = sequelize.query(`INSERT INTO coords VALUES (null,${dataf.latitud},${dataf.longitud},\"${dataf.fecha}\",\"${dataf.hora}\",\"${rinfo.address}"\,\"${dataf.sonido}\",\"${dataf.id}\")`);
   gpsCoords = {
     latitud: dataf.latitud,
     longitud: dataf.longitud
@@ -76,7 +76,8 @@ app.get('/', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
-    song: dataf.sonido,
+    sonido: dataf.sonido,
+    id: dataf.id,
   });
 });
 
@@ -93,8 +94,8 @@ app.get('/coords', (req, res) => {
     long: dataf.longitud,
     date: dataf.fecha,
     time: dataf.hora,
-    song: dataf.sonido,
-
+    sonido: dataf.sonido,
+    id: dataf.id,
   });
 });
 app.get('/linea',async (req, res) => {
@@ -114,18 +115,33 @@ app.get('/historico', async (req, res) => {
   const inicio = req.query.inicio;
   const final = req.query.final;
 
-  sequelize.query(`SELECT DISTINCT latitud,longitud,fecha,hora
+  sequelize.query(`SELECT DISTINCT latitud,longitud,fecha,hora,sonido,carro
   FROM test.coords
   WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
   BETWEEN '${inicio}' AND '${final}'
+  AND carro = '1'
   ORDER BY id DESC;`, { raw: true }).then(function(rows) {
-    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]);
-    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora])
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
+    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
     res.json({
       rows: values,
       todo: todo
     });
   });
+
+  sequelize.query(`SELECT DISTINCT latitud,longitud,fecha,hora,sonido,carro
+  FROM test.coords
+  WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
+  BETWEEN '${inicio}' AND '${final}'
+  AND carro = '2'
+  ORDER BY id DESC;`, { raw: true }).then(function(rows) {
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
+    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
+    res.json({
+      rows: values,
+      todo: todo
+    });
+  });  
 });
  
 
