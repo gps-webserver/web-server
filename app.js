@@ -134,11 +134,11 @@ app.get('/historico', async (req, res) => {
   WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
   BETWEEN '${inicio}' AND '${final}'
   AND carro = '2'
-  ORDER BY id DESC;`, { raw: true }).then(function(rows) {
-    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
-    const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
+  ORDER BY id DESC;`, { raw1: true }).then(function(rows1) {
+    const values = rows1[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
+    const todo =rows1[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
     res.json({
-      rows: values,
+      rows1: values,
       todo: todo
     });
   });  
