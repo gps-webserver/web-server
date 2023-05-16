@@ -7,8 +7,9 @@ let heat1 = L.heatLayer(dataheat1, {
   gradient: { 0.2: 'blue', 0.4: 'cyan', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red' },
   maxZoom: 17,
   max: 80,
-  min: 40
+  min: 45
 }).addTo(map);
+
 
 let dataheat2 = [];
 let heat2 = L.heatLayer(dataheat2, {
@@ -17,7 +18,7 @@ let heat2 = L.heatLayer(dataheat2, {
   gradient: { 0.2: 'blue', 0.4: 'cyan', 0.6: 'lime', 0.8: 'yellow', 1.0: 'red' },
   maxZoom: 17,
   max: 80,
-  min: 40
+  min: 50
 }).addTo(map);
 
 function updateHeatmap(calor) {
@@ -42,13 +43,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let Icon1 = L.icon({
   iconUrl: '/icono1.png',
   iconSize: [58, 40],
-  iconAnchor: [29, 40],
+  iconAnchor: [20, 32],
 });
 
 let Icon2 = L.icon({
   iconUrl: '/icono2.png',
-  iconSize: [54, 40],
-  iconAnchor: [29, 40],
+  iconSize: [58, 40],
+  iconAnchor: [20, 32],
 });
 
 let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon1 }).addTo(map);
