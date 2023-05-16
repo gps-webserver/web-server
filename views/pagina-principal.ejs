@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" aria-current="page" href="/">Inicio</a>
+                    <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" aria-current="page" href="/">Página Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active btn btn-outline mx-2 front-size-nav " ; color: #fff;" href="/pagina-historicos">Históricos</a>
@@ -44,14 +44,25 @@
                         <div id="map"></div>
                     </div>
                 </div>
+                <div class="col-md-12 mt-3 mt-md-0">
+                    <section id="redhistoricos">
+                        <div class="container d-flex align-items-center flex-column flex-md-row justify-content-center justify-content-md-start">
+                            <p class="h2 mb-2 mb-md-0">
+                                Para abrir históricos click aquí
+                            </p>
+                            <a href="/pagina-historicos" class=" btn btn-outline-secondary btn-lg ml-md-3 bg-purplee">Históricos</a>
+                        </div>
+                    </section>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card bg-purple">
                             <div class="card-header mx-auto bg-purple tamano-coords">
-                                Coordenadas
+                                Vehículo 1 
                             </div>
+                            <img src="icono1.png" alt="Vehículo 1" class="d-flex mx-auto" width="100">
                             <div class="card-body">
                                 <table class="table">
                                     <tbody class="tamano-coords">
@@ -71,31 +82,60 @@
                                             <td class="bg-purple">Hora:</td>
                                             <td><span id="time"><%= time ? time : '-- -- --' %></span></td>
                                         </tr>
+                                        <tr>
+                                            <td class="bg-purple">Sonido(dB):</td>
+                                            <td><span id="sonido"><%= sonido ? sonido : '-- -- --' %></span></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 mt-3 mt-md-0">
-                        <section id="redhistoricos">
-                            <div class="container d-flex align-items-center flex-column flex-md-row justify-content-center justify-content-md-start">
-                                <p class="h2 mb-2 mb-md-0">
-                                    Para abrir históricos click aquí
-                                </p>
-                                <a href="/pagina-historicos" class=" btn btn-outline-secondary btn-lg ml-md-3 bg-purplee">Históricos</a>
+                        <div class="card bg-purple">
+                            <div class="card-header mx-auto bg-purple tamano-coords">
+                                Vehículo 2
+                            </div>
+                            <img src="icono2.png" alt="Vehículo 1" class="d-flex mx-auto" width="80">
+                            <div class="card-body">
+                                <table class="table">
+                                    <tbody class="tamano-coords">
+                                        <tr>
+                                            <td class="bg-purple">Latitud:</td>
+                                            <td><span id="lat2"><%= lat ? lat : '-- -- --' %></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-purple">Longitud:</td>
+                                            <td><span id="long2"><%= long ? long : '-- -- --' %></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-purple">Fecha:</td>
+                                            <td><span id="date2"><%= date ? date : '-- -- --' %></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-purple">Hora:</td>
+                                            <td><span id="time2"><%= time ? time : '-- -- --' %></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-purple">Sonido(dB):</td>
+                                            <td><span id="sonido2"><%= sonido ? sonido : '-- -- --' %></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </section>
-                    </div>
+                        </div>
+                    </div>                   
                 </div>
             </div>
         </div>
     </div>
+    
 </header>
 
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
     <script src="iniciomapa.js"></script>
     <script src="/connection.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
