@@ -99,7 +99,7 @@ app.get('/coords', (req, res) => {
 
 
 
-app.get('/historico', async (req, res) => {
+/*app.get('/historico', async (req, res) => {
   const inicio = req.query.inicio;
   const final = req.query.final;
 
@@ -111,6 +111,26 @@ app.get('/historico', async (req, res) => {
   ORDER BY id DESC;`, { raw: true }).then(function(rows) {
     const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
     const todo =rows[0].map(obj =>[parseFloat(obj.latitud),parseFloat(obj.longitud),obj.fecha,obj.hora,parseFloat(obj.sonido)])
+    res.json({
+      rows: values,
+      todo: todo
+    });
+  });
+});*/
+
+app.get('/historico', async (req, res) => {
+  const inicio = req.query.inicio;
+  const final = req.query.final;
+  const id = req.query.id; // Obtener el ID del dispositivo desde la URL
+
+  sequelize.query(`SELECT DISTINCT latitud, longitud, fecha, hora, sonido, carro
+  FROM test.coords
+  WHERE CONCAT(STR_TO_DATE(fecha, '%d/%m/%Y'), ' ', hora) 
+  BETWEEN '${inicio}' AND '${final}'
+  AND carro = '${id}' -- Utilizar el ID del dispositivo en la consulta
+  ORDER BY id DESC;`, { raw: true }).then(function(rows) {
+    const values = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud)]); 
+    const todo = rows[0].map(obj => [parseFloat(obj.latitud), parseFloat(obj.longitud), obj.fecha, obj.hora, parseFloat(obj.sonido)]);
     res.json({
       rows: values,
       todo: todo

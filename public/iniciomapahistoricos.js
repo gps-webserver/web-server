@@ -27,6 +27,9 @@ polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 const slider = document.getElementById("mySlider");
 slider.addEventListener("input", function() {
   radio = slider.value;
+  if (circle) {
+    circle.setRadius(radio/100*1000);
+  }
 });
 
 map.on('click', function(e) {
@@ -84,19 +87,18 @@ function historico() {
   const endTimeInput = endDateInput0.split("T")[1];
   const startDate = startDateInput+' '+startTimeInput+':00'
   const endDate = endDateInput+' '+endTimeInput+':00'
+  const deviceId = document.getElementById('device-id').value; // Obtener el ID del dispositivo desde el elemento HTML correspondiente
   
-  fetch(`/historico?inicio=${startDate}&final=${endDate}`)
+  fetch(`/historico?inicio=${startDate}&final=${endDate}&id=${deviceId}`)
     .then(response => response.json())
     .then(data => {
-      
-      updatePolyline(data.rows);
-      array_todo=data.todo
-      updateheatmap (array_todo);
-      if (array_todo.length === 0) {
-        alert("No hay datos que mostrar entre "+startDateInput+" "+startTimeInput+" y "+endDateInput+" "+endTimeInput);
-      }
-    
-    });
+    updatePolyline(data.rows);
+    array_todo = data.todo;
+    updateheatmap(array_todo);
+    if (array_todo.length === 0) {
+      alert("No hay datos que mostrar entre "+startDateInput+" "+startTimeInput+" y "+ endDateInput+" "+endTimeInput);
+    }
+  });
 }
 
 function updatePolyline(rows) {
