@@ -48,8 +48,8 @@ let Icon1 = L.icon({
 
 let Icon2 = L.icon({
   iconUrl: '/icono2.png',
-  iconSize: [58, 40],
-  iconAnchor: [20, 32],
+  iconSize: [49, 34],
+  iconAnchor: [15, 27],
 });
 
 let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon1 }).addTo(map);
@@ -84,4 +84,39 @@ setInterval(() => {
 }, 3001);
 
 
+//Selector 
+function updateMap(selectedId) {
+  // Ocultar todas las capas
+  heat1.removeFrom(map);
+  heat2.removeFrom(map);
+  marker1.removeFrom(map);
+  marker2.removeFrom(map);
+  polyline1.removeFrom(map);
+  polyline2.removeFrom(map);
+  
+  // Mostrar capas según la ID seleccionada
+  if (selectedId === "0") {
+    // Mostrar todas las capas
+    heat1.addTo(map);
+    heat2.addTo(map);
+    marker1.addTo(map);
+    marker2.addTo(map);
+    polyline1.addTo(map);
+    polyline2.addTo(map);
+  } else if (selectedId === "1") {
+    heat1.addTo(map);
+    marker1.addTo(map);
+    polyline1.addTo(map);
+  } else if (selectedId === "2"){
+    // Mostrar todas las capas
+    heat2.addTo(map);
+    marker2.addTo(map);
+    polyline2.addTo(map);
+  }
+}
+
+document.getElementById("id-selector").addEventListener("change", function() {
+  const selectedId = this.value;
+  updateMap(selectedId);
+});
 
