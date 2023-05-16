@@ -24,7 +24,7 @@ let heat2 = L.heatLayer(dataheat2, {
 function updateHeatmap(calor) {
   // crea un nuevo arreglo de datos de calor
   const point = [calor.lat, calor.long, parseFloat(calor.sonido)];
-  // actualiza la capa de calor con los nuevos datos
+  // actualiza la capa00 de calor con los nuevos datos
   if (calor.id == 1) {
     dataheat1 = [point];
     heat1.setLatLngs(dataheat1);

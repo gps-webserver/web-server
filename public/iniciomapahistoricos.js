@@ -41,7 +41,7 @@ map.on('click', function(e) {
   }
   // Crea un círculo en el centro del mapa con un radio de 500 metros
   circle = L.circle(e.latlng, {
-  radius: radio/100*1000, // Radio en metros
+  radius: radio, // Radio en metros
   color: '#553184', // Color del borde del círculo
   fillColor: '#BEAED3', // Color de relleno del círculo
   fillOpacity: 0.5 // Opacidad del relleno del círculo
