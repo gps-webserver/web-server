@@ -7,6 +7,7 @@ let radio=50
 var Datafound = document.getElementById('Datafound');
 var heatLayer = null;
 
+
 //Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -53,6 +54,40 @@ map.on('click', function(e) {
   console.log('es la x',x)
   Datafound.max=x.length-1
 });
+
+
+// RECUADRO INFORMACIÓN HORA-FECHA-SONIDO
+// Obtén el elemento "selected-info"
+const selectedInfo = document.querySelector('.selected-info');
+
+// Función para actualizar la posición de "selected-info"
+function updateSelectedInfoPosition(lat, lng) {
+  // Calcula la posición en píxeles del punto en el mapa
+  const pointPos = map.latLngToContainerPoint([lat, lng]);
+
+  // Calcula el desplazamiento en píxeles desde el punto de referencia en el mapa
+  const offsetX = -60; // Ajusta el valor según sea necesario
+  const offsetY = -200; // Ajusta el valor según sea necesario
+
+  // Establece la posición de "selected-info"
+  selectedInfo.style.left = pointPos.x + offsetX + 'px';
+  selectedInfo.style.top = pointPos.y + offsetY + 'px';
+}
+
+// Suscribe el evento de actualización de posición cuando se hace clic en el mapa
+map.on('click', function(e) {
+  const lat = e.latlng.lat;
+  const lng = e.latlng.lng;
+  updateSelectedInfoPosition(lat, lng);
+});
+
+// Suscribe el evento de actualización de posición cuando se cambia el valor del slider
+slider.addEventListener('input', function() {
+  const lat = x[x.length - 1 - Datafound.value][0];
+  const lng = x[x.length - 1 - Datafound.value][1];
+  updateSelectedInfoPosition(lat, lng);
+});
+
 
 function updateheatmap(rows) {
   heatdata = rows.map(item => [item[0], item[1], item[4]]);
@@ -122,4 +157,12 @@ Datafound.addEventListener("input", function() {
   selectedSound.innerHTML = x[x.length - 1 - Datafound.value][4];
   marker.setLatLng([lat,lng]);
   map.panTo([lat,lng]);
+});
+
+//Valor del radio
+const radioValueElement = document.getElementById("radioValue");
+radioValueElement.textContent = parseInt(slider.value); // Muestra el valor inicial del slider
+
+slider.addEventListener("input", function() {
+  radioValueElement.textContent = parseInt(this.value); // Actualiza el valor del radio mientras se mueve el slider
 });

@@ -33,23 +33,25 @@ function updateHeatmap(calor) {
     heat2.setLatLngs(dataheat2);
   }
 }
-
 let polyline1, polyline2;
 // Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+
 let Icon1 = L.icon({
   iconUrl: '/icono1.png',
-  iconSize: [58, 40],
-  iconAnchor: [20, 32],
+  iconSize: [58,40],
+  iconAnchor: [20,32],
 });
+
+let scaleFactor = 0.9; // Ajusta este valor para reducir el tamaño del Icon2
 
 let Icon2 = L.icon({
   iconUrl: '/icono2.png',
-  iconSize: [58, 40],
-  iconAnchor: [20, 32],
+  iconSize: [58 * scaleFactor, 40 * scaleFactor],
+  iconAnchor: [20 * scaleFactor, 32 * scaleFactor],
 });
 
 let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon1 }).addTo(map);
@@ -119,4 +121,39 @@ document.getElementById("id-selector").addEventListener("change", function() {
 });
 
 
+//Selector 
+function updateMap(selectedId) {
+  // Ocultar todas las capas
+  heat1.removeFrom(map);
+  heat2.removeFrom(map);
+  marker1.removeFrom(map);
+  marker2.removeFrom(map);
+  polyline1.removeFrom(map);
+  polyline2.removeFrom(map);
+  
+  // Mostrar capas según la ID seleccionada
+  if (selectedId === "0") {
+    // Mostrar todas las capas
+    heat1.addTo(map);
+    heat2.addTo(map);
+    marker1.addTo(map);
+    marker2.addTo(map);
+    polyline1.addTo(map);
+    polyline2.addTo(map);
+  } else if (selectedId === "1") {
+    heat1.addTo(map);
+    marker1.addTo(map);
+    polyline1.addTo(map);
+  } else if (selectedId === "2"){
+    // Mostrar todas las capas
+    heat2.addTo(map);
+    marker2.addTo(map);
+    polyline2.addTo(map);
+  }
+}
+
+document.getElementById("id-selector").addEventListener("change", function() {
+  const selectedId = this.value;
+  updateMap(selectedId);
+});
 
