@@ -26,10 +26,10 @@ function updateHeatmap(calor) {
   const point = [calor.lat, calor.long, parseFloat(calor.sonido)];
   // actualiza la capa de calor con los nuevos datos
   if (calor.id == 1) {
-    dataheat1 =/*.push*/[point];
+    dataheat1 = [point];
     heat1.setLatLngs(dataheat1);
   } else if (calor.id == 2) {
-    dataheat2 =/*.push*/[point];
+    dataheat2 = [point];
     heat2.setLatLngs(dataheat2);
   }
 }
