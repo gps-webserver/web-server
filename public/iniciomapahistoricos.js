@@ -27,6 +27,9 @@ polyline = L.polyline(vector, {color: 'purple'}).addTo(map);
 const slider = document.getElementById("mySlider");
 slider.addEventListener("input", function() {
   radio = slider.value;
+  if (circle) {
+    circle.setRadius(radio/100*1000);
+  }
 });
 
 map.on('click', function(e) {
