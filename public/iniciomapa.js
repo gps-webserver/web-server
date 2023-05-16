@@ -26,30 +26,32 @@ function updateHeatmap(calor) {
   const point = [calor.lat, calor.long, parseFloat(calor.sonido)];
   // actualiza la capa de calor con los nuevos datos
   if (calor.id == 1) {
-    dataheat1.push(point);
+    dataheat1 =/*.push*/[point];
     heat1.setLatLngs(dataheat1);
   } else if (calor.id == 2) {
-    dataheat2.push(point);
+    dataheat2 =/*.push*/[point];
     heat2.setLatLngs(dataheat2);
   }
 }
-
 let polyline1, polyline2;
 // Agregar tilelAyer mapa base desde openstreetmap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+
 let Icon1 = L.icon({
   iconUrl: '/icono1.png',
-  iconSize: [58, 40],
-  iconAnchor: [20, 32],
+  iconSize: [58,40],
+  iconAnchor: [20,32],
 });
+
+let scaleFactor = 0.9; // Ajusta este valor para reducir el tamaño del Icon2
 
 let Icon2 = L.icon({
   iconUrl: '/icono2.png',
-  iconSize: [49, 34],
-  iconAnchor: [15, 27],
+  iconSize: [58 * scaleFactor, 40 * scaleFactor],
+  iconAnchor: [20 * scaleFactor, 32 * scaleFactor],
 });
 
 let marker1 = L.marker([11.019067669425738, -74.85135899187047], { icon: Icon1 }).addTo(map);
