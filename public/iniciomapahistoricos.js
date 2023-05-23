@@ -3,9 +3,12 @@ var polyline;
 let array_todo=[[]]
 let x=[[]]
 let circle;
-let radio=50
+let radio=100
 var Datafound = document.getElementById('Datafound');
 var heatLayer = null;
+var latitud = 0;
+var longitud = 0;
+var coordenadas;
 
 
 //Agregar tilelAyer mapa base desde openstreetmap
@@ -29,29 +32,29 @@ const slider = document.getElementById("mySlider");
 slider.addEventListener("input", function() {
   radio = slider.value;
   if (circle) {
-    circle.setRadius(radio*2);
+    circle.setRadius(radio);
+    x=array_todo.filter(p => obtener_radio(p, coordenadas,radio));
+    Datafound.max=x.length-1
   }
 });
 
 map.on('click', function(e) {
-  let latitud = e.latlng.lat;
-  let longitud = e.latlng.lng;
+  latitud = e.latlng.lat;
+  longitud = e.latlng.lng;
   if (circle) {
     circle.remove();
   }
-  // Crea un círculo en el centro del mapa con un radio de 500 metros
+  // Crea un círculo en el  mapa 
   circle = L.circle(e.latlng, {
-  radius: radio*2, // Radio en metros
+  radius: radio, // Radio en metros
   color: '#553184', // Color del borde del círculo
   fillColor: '#BEAED3', // Color de relleno del círculo
   fillOpacity: 0.5 // Opacidad del relleno del círculo
 }).addTo(map);  
 
   // Guardar la latitud y longitud en un objeto
-  let coordenadas = {latitud: latitud, longitud: longitud};
+  coordenadas = {latitud: latitud, longitud: longitud};
   x=array_todo.filter(p => obtener_radio(p, coordenadas,radio));
-  console.log('array_todo',array_todo)
-  console.log('es la x',x)
   Datafound.max=x.length-1
 });
 
@@ -109,7 +112,7 @@ function updateheatmap(rows) {
   } 
 
 function obtener_radio(todo, coordenadas,radio) {
-  return (todo[0] - coordenadas.latitud) ** 2 + (todo[1] - coordenadas.longitud) ** 2 <= (radio/(100*111.10)) ** 2;
+  return (todo[0] - coordenadas.latitud) ** 2 + (todo[1] - coordenadas.longitud) ** 2 <= (radio/(1000*111.10)) ** 2;
 }  
 
 
