@@ -3,7 +3,7 @@ var polyline;
 let array_todo=[[]]
 let x=[[]]
 let circle;
-let radio=100
+let radio=500
 var Datafound = document.getElementById('Datafound');
 var heatLayer = null;
 var latitud = 0;
